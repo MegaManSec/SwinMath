@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{hyperref}
+\usepackage[]{xcolor}
+\usepackage[]{fancyhdr}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\title{\vspace{-4cm}MTH30002 - Differential Equations \\Assignment 4}
+\author{Joshua Rogers}
+\lhead{MTH30002 Assignment 4}
+\rhead{Joshua Rogers 101096819}
+\date\today
+
+\begin{document}
+\maketitle 
+
+\section*{Question 3.L}
+Given the Legendre's equation
+\begin{equation}\label{eq:3L}
+y^{''}-\frac{2x}{1-x^2}y^{'}+\frac{n(n+1)}{1-x^2}y=0
+\end{equation}
+find the Taylor series expansion for $\frac{1}{1-x^{2}}$ near $x_0 = 0$, and thus show that equation \textbf{\ref{eq:3L}} is analytical at $x_0 = 0$.
+
+
+\subsection*{Answer}
+
+A function $f$ is called analytic at $x_0$ if it is given by a convergent power series.
+
+Consider the Taylor series expansion of $f(x) = \frac{1}{1-x^2}$ around $x_0 = 0$.
+
+\begin{equation}
+f(x) = f(x_0) + \frac{f^{'}(x_0)(x-x_0)}{1!} + \frac{f^{''}(x_0)(x-x_0)^{2}}{2!} + ... + \frac{f^{n}(x_0)(x-x_0)^{n}}{n!}
+\end{equation}
+
+\begin{align*}
+&f(0) = 1\\
+&f^{'}(x) = \frac{2x}{(1-x^2)^2} \therefore f^{'}(x)x = 0\\
+&f^{''}(x) = \frac{8x^2}{(1-x^2)^3}+\frac{2}{(1-x)^2} \therefore \frac{f^{''}(0)x^2}{2!} = x^2\\
+&f^{'''}(x) = \frac{24x}{(1-x^2)^3} + \frac{48x^3}{(1-x^2)^4} \therefore f^{'''}(0)x^3 = 0\\
+&f^{''''}(x) = \frac{288x^2}{(1-x^2)^4}+\frac{24}{(1-x^2)^3}+\frac{384x^4}{(1-x^2)^5} \therefore \frac{f^{''''}(0)x^4}{4!} = x^4
+\end{align*}
+
+
+
+Therefore, the Taylor series about $x_0 = 0$ is clearly $\sum_{n=0}^{\infty} x^{2n}$.
+
+\begin{equation}\label{limits1}
+L = \lim_{n\to\infty} \left\| \frac{a_{n+1}}{a_n} \right\| = \lim_{n\to\infty}\left\|\frac{x^{2(n+1)}}{x^{2n}}\right\| = \left|x^2\right|. 
+\end{equation}
+
+\begin{align*}
+R =& \left\|x^2\right\| < 1 \\
+& \sqrt{\left\|x^2\right\|} < \sqrt{1}\\
+\\
+R =& \left\|x\right\| < 1
+\end{align*}
+
+The series is by definition convergent.
+
+Continuing...
+\begin{equation*}
+\frac{-2x}{1-x^2} = -2x\cdot \sum_{n=0}^{\infty} {x^{2n}} = -2\cdot \sum_{n=0}^{\infty} {x^{2n+1}} \text{  around } x_0=0.
+\end{equation*}
+
+\begin{equation}\label{limits2}
+L = \lim_{n\to\infty} \left\| \frac{a_{n+1}}{a_n} \right\| = \lim_{n\to\infty}\left\|\frac{x^{2(n+1+1)}}{x^{2n+1}}\right\| = \left|x^2\right|.
+\end{equation}
+    
+\begin{align*}
+R =& \left\|x^2\right\| < 1 \\
+& \sqrt{\left\|x^2\right\|} < \sqrt{1}\\
+\\
+R =& \left\|x\right\| < 1
+\end{align*}
+
+The series is also convergent.
+
+\begin{equation}\label{limits3}
+\frac{n(n+1)}{1-x^2} = n(n+1) \sum_{m=0}^{\infty} x^{2m} \text{  around } x_0=0.
+\end{equation}
+
+Clearly, at $x_0 = 0$, the equation \textbf{\ref{eq:3L}} is analytic as shown in \textbf{\ref{limits1}}, \textbf{\ref{limits2}}, and \textbf{\ref{limits3}}.
+
+\section*{Question 3.M}
+Using the recurrence equation
+\begin{align}\label{3M}
+a_{s+2} = \frac{-(n-s)(n+s+1)\cdot{a_s}}{(s+2)(s+1)}\Bigr|
+s\geq0
+\end{align}
+show that the radius of convergence R = 1.
+
+\subsection*{Answer}
+
+Given that \textbf{\ref{3M}} is true for $s\geq0$ we let $s = 0$.
+\begin{equation*}
+a_2=\frac{-n(n+1)a_0}{2!}
+\end{equation*}
+
+\begin{align*}
+L = \lim_{n\to\infty} \left\| \frac{a_{n+1}}{a_n} \right\| = \lim_{n\to\infty}\left\|\frac{-2\cdot (n+1)(n+2)\cdot a_0}{-2\cdot(n+1)\cdot n\cdot a_0}\right\|\\
+\lim_{n\to\infty} \left\|1 + \frac{2}{n}\right\| \therefore L=1
+\end{align*}
+
+\begin{equation*}
+R = \frac{1}{L} \therefore R=1.
+\end{equation*}
+
+\end{document}
