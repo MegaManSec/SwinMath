@@ -103,18 +103,21 @@ show that the radius of convergence R = 1.
 
 \subsection*{Answer}
 
-Given that \textbf{\ref{3M}} is true for $s\geq0$ we let $s = 0$.
-\begin{equation*}
-a_2=\frac{-n(n+1)a_0}{2!}
-\end{equation*}
 
+For $a_1 = 0$ all the odd terms in equation \ref{3M} are 0. Thus,  $b_s = a_{2s}$.
+Then:
 \begin{align*}
-L = \lim_{n\to\infty} \left\| \frac{a_{n+1}}{a_n} \right\| = \lim_{n\to\infty}\left\|\frac{-2\cdot (n+1)(n+2)\cdot a_0}{-2\cdot(n+1)\cdot n\cdot a_0}\right\|\\
-\lim_{n\to\infty} \left\|1 + \frac{2}{n}\right\| \therefore L=1
+y = \sum_{n=0}^{\infty} b_s x^{2s}\\\\
+b_{s+1} =  \frac{-(n-2s)(n+2s+1)}{(2s+2)(2s+1)}
 \end{align*}
 
-\begin{equation*}
-R = \frac{1}{L} \therefore R=1.
-\end{equation*}
+Performing the ratio test:
+\begin{align*}
+\lim_{s\to\infty}\left| \frac{-(n-2s)(n+2s+1)}{(2s+2)(2s+1)} x^{2s+2} \cdot \frac{(s+2)(s+1)}{-(n-s)(n+s+1)x^{2s}}\right| = \left|x^2\right|.\\
+\left|x^2\right| < 1\\
+\left|x\right| < \sqrt{1}
+\end{align*}
+
+Therefore, $R = 1$.
 
 \end{document}
