@@ -81,7 +81,7 @@ Performing the ratio test,
 
 We have $\left|\frac{z}{27}\right| < 1$ and thus $\left|z\right| < 27$.
 
-The \textit{radius} is therefore $27$.
+The \textit{radius} is therefore $27$, and thus is absolutely convergent for this range.
 The disk of convergence may include the endpoints. Do they? No. How do I know? using the comparison test(the compare-it-on-wolframalpha-test), the series is seen to be divergent in the case that $z = 27$ and $z = -27$. Do I expect any mark for this unsubstantiated claim? No!
 
 Therefore we find the disk of convergence. 
@@ -111,18 +111,20 @@ The disk of convergence is therefore $\left|z\right| < \frac{1}{2}$.
 
 Finding a closed form expression, we identify that:
 \begin{align*}
-\sum_{n=0}^{\infty}  (-1)^n \cdot 2^{-1} \cdot 2^n \cdot 15 \cdot z^n = \frac{15}{2} \sum_{n=0}^{\infty} (-2z)^n
+\sum_{n=0}^{\infty}  (-1)^n \cdot 2^{-1} \cdot 2^n \cdot 15 \cdot z^n = \frac{15}{2} \sum_{n=0}^{\infty} (-2z)^n \Bigr| \left|z\right| < \frac{1}{2}
 \end{align*}
 This is a geometric series with $r = -2z$. Thus, our closed form expression is
 \[
-f(z) = \frac{15}{2(2z+1)} \Bigr| \left|z\right| < \frac{1}{2}
+f(z) = \frac{15}{2(2z+1)} \Bigr| z \neq -\frac{1}{2}
 \]
 
-Finding a closed form expression for $f(z) \cdot n^2$ will not be fun.
+\subsection*{}
+
+Finding a closed form expression for $g(z) = f(z) \cdot n^2$ will not be fun.
 
 Nonetheless.
 
-We have
+We have (we temporarily remove the constant $\frac{15}{2}$ and add it back in later)
 \[
 f(z) = \frac{1}{1+2z} \quad f^{'}(z) = \frac{-2}{(1+2z)^2} \quad f^{''}(z) = \frac{8}{(1-2z)^3}
 \]
@@ -158,7 +160,7 @@ z^2 \cdot \frac{d^2}{dz^2} \sum (-2z)^n = \sum n^2(-2z)^n + \frac{2z}{(1+2z)^2}\
 Finally, we find
 
 \[
-f(z) \cdot n^2 = \frac{15z(2z-1)}{(2z+1)^3} \Bigr| \left|z\right| < \frac{1}{2}
+g(z) = f(z) \cdot n^2 = \frac{15z(2z-1)}{(2z+1)^3} \Bigr| \left|z\right| < \frac{1}{2}
 \]
 
 Double checking this result, we find that with $z = \frac{1}{3}$, $\sum (-1)^n \cdot 2^{n-1} \cdot 15 \cdot \frac{1}{3}^n \cdot n^2 = \frac{-9}{25}$.
