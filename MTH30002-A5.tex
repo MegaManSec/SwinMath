@@ -36,7 +36,7 @@ Find the appropriate solutions to the following ODEs:
 \subsection*{Answers}
 
 \subsubsection*{3.4 A}
-We may solve \textbf{\ref{34a}} using substitution.
+We may solve \textbf{\eqref{34a}} using substitution.
 \begin{align*}
 y &= \frac{u}{(x+2)}\\
 y^{''} &= \frac{u^{''}}{(x+2)}-\frac{2u^{'}}{(x+2)^2}+\frac{2u}{(x+2)^3}
@@ -58,8 +58,8 @@ w^{'} = \frac{2w}{(x+2)}\\
 \end{align*}
 
 We allow $e^c = c_1$ and therefore have
-$$ w(x) = c_1(\left|x+2\right|) $$
-From our substitutions, we find $u(x)$ and thus $y(x)$.
+$$ w(x) = c_1(\left|x+2\right|)^2 $$
+$|(x+2)|^2$ is always positive so we can remove the absolute signs. From our substitutions, we find $u(x)$ and thus $y(x)$.
 
 \begin{align*}
 \int{u^{'}} &= \int{c_1(x+2)^2}\\
@@ -74,7 +74,10 @@ y(x) = c_1(x+2)^2 + \frac{c_2}{(x+2)}
 \]
 
 \subsubsection*{3.4 B, 3.4 C, 3.4 D}
-Solving \textbf{\ref{34b}}, \textbf{\ref{34c}}, and \textbf{\ref{34d}}, we use the Frobenius Method.
+Solving \textbf{\eqref{34b}}, \textbf{\eqref{34c}}, and \textbf{\eqref{34d}}, we use the Frobenius Method.
+
+First we double check that the Taylor series expansion exists for each $p(x) \cdot x$ and $q(x) \cdot x^2$ at $x_0=0$; they do, therefore we can proceed with Forebius' method.
+
 
 We allow the following solutions:
 \begin{align}\label{frobenius}
@@ -83,7 +86,7 @@ y^{'} &= \sum_{n=0}^{\infty}{(n+r) \cdot a_n \cdot x^{n+r-1}}\\
 y^{''} &= \sum_{n=0}^{\infty}{(n+r)(n+r-1) \cdot a_n \cdot x^{n+r-2}}
 \end{align}
 
-Solving for \textbf{\ref{34b}}, we check the indicial equation $r(r-1)+\frac{1}{2}r = 0$ therefore $r =0,1/2$.
+Solving for \textbf{\eqref{34b}}, we check the indicial equation $r(r-1)+\frac{1}{2}r = 0$ therefore $r =0,1/2$.
 
 \begin{align*}
 4\sum_{n=0}^{\infty}(n+r-1)(n+r) \cdot a_n \cdot x^{n+r-1} + 2\sum_{n=0}^{\infty}(n+r) \cdot a_n \cdot x^{n+r-1} + \sum_{n=0}^{\infty} \cdot a_n \cdot x^{n+r} &= 0 \\
@@ -101,7 +104,7 @@ a_{n+1} = \frac{-a_n}{4(n+r)(n+r+1)+2(n+r+1)} \Bigr| s\geq0
 \end{equation}
 
 
-Using the recurrence relation \textbf{\ref{34be}} and letting $r=\frac{1}{2}$ we find:
+Using the recurrence relation \textbf{\eqref{34be}} and letting $r=\frac{1}{2}$ we find:
 \begin{align*}
 n=0, a_1 &= \frac{-a_0}{3!}\\
 n=1, a_2 &= \frac{-a_1}{5 \cdot 4} = \frac{a_0}{5!}\\
@@ -111,7 +114,7 @@ From inspection, we can find that
 \begin{equation}\label{34ba}
 a_n = \frac{(-1)^n}{(2n+1)!}
 \end{equation}
-By induction (i.e. wolframalpha) we can find our first solution to the ODE. Placing the $a_n$ from \textbf{\ref{34ba}} and $ r = \frac{1}{2} $ in equation \textbf{\ref{frobenius}}, we find:
+By induction (i.e. wolframalpha) we can find our first solution to the ODE. Placing the $a_n$ from \textbf{\eqref{34ba}} and $ r = \frac{1}{2} $ in equation \textbf{\eqref{frobenius}}, we find:
 \[
 \sum_{n=0}^{\infty}{\frac{(-1)^n}{(2n+1)!} \cdot x^{n+\frac{1}{2}}} = sin(\sqrt{x})
 \]
@@ -119,7 +122,7 @@ As such, our first solution is:
 \[y_1 = c_1sin(\sqrt{x})
 \]
 
-Now for the second solution, we use the recurrence relation \textbf{\ref{34be}} and let $r=0$.
+Now for the second solution, we use the recurrence relation \textbf{\eqref{34be}} and let $r=0$.
 \[
 a_{n+1} = \frac{-a_n}{(2n+2)(2n+1)} \Bigr| s\geq0
 \]
@@ -139,7 +142,7 @@ y(x) = c_1 \cdot sin(\sqrt{x}) + c_2 \cdot cos(\sqrt{x})
 \]
 \par
 
-Solving for \textbf{\ref{34c}}, we first find our expected values of r: $r(r-1)+\frac{1}{2} =0$, $r = 0,\frac{1}{2}$
+Solving for \textbf{\eqref{34c}}, we first find our expected values of r: $r(r-1)+\frac{1}{2} =0$, $r = 0,\frac{1}{2}$
 
 \begin{align*}
 2\sum_{n=0}^{\infty}(n+r)(n+r-1) \cdot a_n \cdot x^{n+r-1} + \sum_{n=0}^{\infty} (n+r) \cdot (n+r) \cdot x^{n+r-1} - 8\sum_{n=0}^{\infty} (n+r) \cdot a_n \cdot x^{n+r}\\
@@ -181,7 +184,7 @@ y(x) = c_1 e^{2x} + c_2 e^{2x} \cdot \sqrt{x}
 \]
 
 \par
-Finally, we can solve for equation \textbf{\ref{34d}}.
+Finally, we can solve for equation \textbf{\eqref{34d}}.
 
 \[
 \sum_{n=0}^{\infty} (n+r-1)(n+r) \cdot a_n \cdot x^{n+r} + 4\sum_{n=0}^{\infty} (n+r) \cdot a_n \cdot x^{n+r} - \sum_{n=2}^{\infty} a_n \cdot x^{n+r} + 2 \sum_{n=0}^{\infty} a_n \cdot x^{n+r} = 0
@@ -200,7 +203,7 @@ $$a_{2n} = \frac{1}{(2n+1)!}$$
 $$\sum_{n=0}^{\infty} x^{-2} \cdot \frac{x^{2n+1}}{(2n+1)!} = x^{-2} \cdot sinh(x) $$
 Thus we have found solution number one, $y(x) = x^{-2} sinh(x)$.
 
-For $r = -2$, we find $a_n = \frac{a_{n-2}}{n(n-1)} \Bigr| n -geq 2$
+For $r = -2$, we find $a_n = \frac{a_{n-2}}{n(n-1)} \Bigr| n \geq 2$
 
 \begin{align*}
 n=2, n_2 = \frac{1}{2!}\\
@@ -210,7 +213,7 @@ n=4, n_4 = \frac{1}{4!}\\
 
 We find
 $$a_{2n} = \frac{1}{(2n)!}$$
-$$\sum_{n=0}^{\infty} \frac{x^{2n-2}}{(2n)!} = x^{-2} \cdot cosh(X)$$
+$$\sum_{n=0}^{\infty} \frac{x^{2n-2}}{(2n)!} = x^{-2} \cdot cosh(x)$$
 
 Thus, the solution to this ODE is given by the equation $$y(x) = c_1 \cdot x^{-2} \cdot sinh(x) + c_2 \cdot x^{-2} \cdot cosh(x)$$
 \par
@@ -225,14 +228,14 @@ Reduce the following equations to Bessel's ODE and find a general solution.
 
 \subsubsection*{3.S.3}
 
-For \textbf{\ref{3s3}}, we allow $x=\sqrt{x}$ thus $x=z^2$.
+For \textbf{\eqref{3s3}}, we allow $x=\sqrt{x}$ thus $x=z^2$.
 
 \begin{align*}
 y_x^{'} = \frac{y_z^{'}}{2\sqrt{x}}\\
 y_x^{''} = \frac{y_z^{''}}{4x} - \frac{y_z^{'}}{4x\sqrt{x}}
 \end{align*}
 
-Putting these two equations into \textbf{\ref{3s3}}:
+Putting these two equations into \textbf{\eqref{3s3}}:
 
 \begin{align*}
 z^2\left[\frac{y_z^{''}}{4x} - \frac{y_z^{'}}{4x\sqrt{x}}\right] +  \frac{y_z^{'}}{2\sqrt{x}} + \frac{1}{4} y = 0\\
@@ -246,7 +249,7 @@ $$y(x) = c_1 J_0 (\sqrt{x}) + c_2 Y_0 (\sqrt{x})$$
 \par
 \subsubsection*{3.S.8}
 
-For \textbf{\ref{3s8}}, we allow $2x+1=z \therefore x=\frac{z-1}{2}$
+For \textbf{\eqref{3s8}}, we allow $2x+1=z \therefore x=\frac{z-1}{2}$
 
 \begin{align*}
 y_x^{'} = 2y_z^{'}\\
@@ -260,7 +263,7 @@ $$y(x) = c_1 J_1 (2x+1) + c_2 Y_1 (2x+1)$$.
 \par
 \subsubsection*{3.S.10}
 
-For \textbf{\ref{3s10}}, we have 
+For \textbf{\eqref{3s10}}, we have 
 \begin{align*}
 y &= x^vy_z\\
 y^{'} &= x^vy_z^{'}+vx^{v-1}y_z\\
