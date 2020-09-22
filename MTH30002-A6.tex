@@ -1,4 +1,5 @@
 
+
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -31,24 +32,54 @@
 
 Solve the following equation:
 
-\begin{equation}\label{11} \left(\frac{y'}{x}\right)^{'} + \frac{\left(\lambda + 1\right)y}{x^3} = 0\end{equation}
-
-for $y(1) = 0$ and $y(e^\pi)=0$
+\begin{align}\label{11}
+\left(\frac{y^{'}}{x}\right)^{'} + \frac{\left(\lambda + 1\right)y}{x^3} = 0 && &y(1) =0 \\
+&& &y(e^\pi)=0 \nonumber
+\end{align}
 \subsection*{Answer}
 
-For $\lambda > 0$ we let $\lambda = k^2$.
+\subsubsection*{Case $\lambda=0$}
+$$ \left(\frac{y^{'}}{x}\right)^{'} + \frac{y}{x^3} = 0 $$
+
+Using the Euler-Couch method, we obtain
+$$y = c_1 x + c_2 x \ln x$$
+
+For $y=0$ and $x=1$ we find $c_1 = 0$.
+
+For $y=0$ and $x=e^\pi$ we find $c_1+c_2\pi=0$.
+
+$$\det \left( \begin{bmatrix} 1 & 0 \\ 1 & \pi \end{bmatrix} \right) \neq 0$$
+
+Therefore, we have no eigenvalues for this case, only the trivial solution $y=0$. This is because as the determinate is not 0, the set of equations are not orthogonal, which they must be to satisfy Sturm-Liouville problems.
+
+\subsubsection*{Case $\lambda < 0$}
+We allow $\lambda = -k^2$.
+$$\left(\frac{y^{'}}{x}\right)^{'} + \frac{\left(1-k^2 \right)y}{x^3} = 0$$
+
+$$y = \left[c_1x^{-1}+c_2x\right]x^k$$
+
+For $y=0$ and $x=1$ we find $c_1+c_2=0$
+
+For $y=0$ and $x=e^\pi$ we find $e^{-\pi}c_1 + e^{\pi}c_2 = 0$
+
+$$\det \left( \begin{bmatrix} 1 & 1 \\ 1 & e^{-\pi} \end{bmatrix} \right) \neq 0$$
+Therefore, we have no eigenvalues for this case, only the trivial solution $y=0$.
+
+\subsubsection*{Case $\lambda > 0$}
+
+We allow $\lambda = k^2$.
 Substituting this into \eqref{11} produces
-$$ \left(\frac{y'}{x}\right)^{'} + \frac{\left(k^2 + 1\right)y}{x^3} = 0 $$
+$$ \left(\frac{y^{'}}{x}\right)^{'} + \frac{\left(k^2 + 1\right)y}{x^3} = 0 $$
 
 Using the Euler-Couchy method, we obtain the solution
 
-$$ y= \left[ c_1 x^{ik} + c_2 x^{-ik}\right] \cancel{x} $$
+$$ y= \left[ c_1 x^{ik} + c_2 x^{-ik}\right] x $$
 thus, we obtain
-\begin{equation}\label{2}y = c_1 cos\left(k \ln x \right) + c_2 sin\left( k \ln x \right)\end{equation}
+\begin{equation}\label{2}y = x c_1 cos\left(k \ln x \right) + x c_2 sin\left( k \ln x \right)\end{equation}
 
 Plugging in the endpoint $y(1)=0$ into \eqref{2}, we find that $c_1=0$ and thus
 \begin{equation}\label{25}
-y = c_2 sin\left(k \ln x \right)\Bigr| c_2 \neq 0
+y = x c_2 sin\left(k \ln x \right)\Bigr| c_2 \neq 0
 \end{equation}
 
 For an eigenvalue of equation $\eqref{11}$, with $y(1) = 0$ and $y(e^\pi) = 0$, the equation must satisfy the following condition.
@@ -72,42 +103,117 @@ Thus, we have the eigenvalues:
 $$\lambda_{n} = k^2 = n^2$$
 
 Given $\eqref{25}$ the eigenfunctions are
-$$ y_n = sin \left( n\cdot \ln x \right ) $$.
+$$ y_n = x sin \left( n\cdot \ln x \right ) $$.
+
+\pagebreak
 
 
 \section*{Problem 9}
 
 Solve the following equation:
 
-\begin{equation}\label{9} y^{''} + \lambda y =0\end{equation}
+\begin{align}\label{9}
+y^{''} + \lambda y =0 && &y(0) = 0 \\
+&& &y^{'}(L) =0 \nonumber
+\end{align}
 
-for $y(0) = 0$ and $y^{'}(L)=0$
 \subsection*{Answers}
+\subsubsection*{Case $\lambda=0$}
+$$ y^{''}=0 $$
 
-For $\lambda >0$ we have the solution $y = c_1 cos\left(\sqrt \lambda x \right) + c_2 sin\left( \sqrt \lambda x \right)$
+Thus, clearly,
+$$y^{'} = c_1$$
+$$y = c_1 x + c_2 $$
 
-Given the endpoint $y(0) = 0$ we find that $c_1 =0$ and thus we solve for the solution.
+For $y=0$ and $x=0$ we find $c_2 = 0$.
 
-\begin{align}
-    &y = c_2 sin\left( \sqrt \lambda x \right) \Bigr| c_2 \neq 0  \label{6}  \\
-    &y' = c_2 \sqrt \lambda \cdot cos \left( \sqrt \lambda x \right) \Bigr| c_2 \neq 0 \nonumber
-\end{align}
+For $y^{'}=0$ and $x=L$ we find $c_1=0$.
 
-Given the endpoint $y^{'}(L)=0$ we obtain
+$$\det \left( \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \right) \neq 0$$
+
+Therefore, we have no eigenvalues for this case, only the trivial solution $y=0$.
+
+\subsubsection*{Case $\lambda < 0$}
+We allow $\lambda = -k^2$.
 \begin{align*}
-&0 = c_2 \cdot cos \left( \sqrt \lambda L \right) \\
-&0 = cos\left ( \sqrt \lambda L \right)
+y^{''}-k^{2}y=0 \\
+y = c_1 e^{kx} + c_2 e^{-kx} \\
+y^{'} = \left[c_1 e^{kx} - c_2 e^{-kx}\right] k
 \end{align*}
-$cos(x)$ is zero for values $x = \frac{\pi}{2}, \frac{3\pi}{2}, \cdots , \frac{(2n-1) \pi}{2}$ thus we find the eigenvalues
 
-\begin{align}
-    &\sqrt \lambda = \frac{(2n-1)\pi}{2L} \nonumber \\
-    & \lambda_{n} = \frac{(2n-1)^2 \pi^2}{4L^2} \label{4}
-\end{align}
+For $y=0$ and $x=0$ we find $c_1+c_2=0$
 
-Given equation $\eqref{4}$ and $\eqref{6}$, we find the eigenfunctions.
+For $y^{'}=0$ and $x=L$ we find $c_1 e^{kL} - c_2 e^{-kL} = 0$
 
-$$
-y_n = sin \left ( \frac{(2n-1)\pi\cdot x}{2L} \right)
-$$
+Letting $c_1 = -c_2$, we obtain $c_1\left[ e^{kL} +e^{-kL}\right] = 0$
+
+$$\det \left( \begin{bmatrix} 1 & 1 \\ e^{kL} & e^{-kL} \end{bmatrix} \right) \neq 0\Bigr|  kL\in\mathbb{N} $$
+Therefore, we have no eigenvalues for this case, only the trivial solution $y=0$.
+
+
+
+
+
+\subsubsection*{Case $\lambda > 0$}
+
+We allow $\lambda = k^2$.
+\begin{align*}
+y^{''}+k^{2}y=0 \\
+y = c_1 cos\left(kx\right) + c_2 sin\left(kx\right) \\
+y^{'} = \left[-c_1 sin\left(kx\right) + c_2 cos\left(kx\right) \right] k
+\end{align*}
+
+For $y=0$ and $x=0$ we find $c_1 = 0$.
+
+For $y^{'}=0$ and $x=L$ we find $c_2 \cdot k \cdot cos(kL) = 0$.
+\begin{equation}\label{matrix2}
+\det \left( \begin{bmatrix} 1 & 0 \\ 0 & cos(kL) \end{bmatrix} \right) = 0
+\end{equation}
+
+To satisfy the matrix $\eqref{matrix2}$, we must solve for values of $k$ such that $cos\left(kL\right) = 0$.
+
+\begin{align*}
+    kL = \frac{\left(2n+1\right)\pi}{2} \\
+    k = \frac{\left(2n+1\right)\pi}{2L}
+\end{align*}
+
+Thus, our eigenvalues are
+
+$$\lambda_n = k^2 = \frac{\left(2n+1\right)^2\pi^2}{4L^2}$$
+
+and given $c_1=0$, we find our eigenfunction
+
+$$y_n = sin\left( k \cdot x\right) = sin \left( \frac{\left(2n+1\right)\pi \cdot x}{2L}\right)$$
+
+
+\pagebreak
+\section*{Comments}
+Using the fact that each pair of equations have a determinate of 0, we thus conclude that the solutions obtained are orthogonal. 
+
+Or, we use the following integrals.
+
+
+\subsection*{Problem 9}
+
+$$\int_0^{L} sin\left(\frac{n \pi x}{L}\right) \cdot sin\left(\frac{m \pi x}{L}\right) = \frac{1}{2} \int_0^{L} cos \left(\frac{\pi\left(n-m\right)x}{L}\right) - cos\left(\frac{\pi\left(n+m+1\right)x}{L}\right)$$
+This integral has the solution
+$$\frac{1}{2} \left( \frac{L sin(\pi(z_1))}{\pi(z_1)} - \frac{L sin(\pi(z_2))}{\pi(z_2)}\right)$$
+where $z_1 = n-m$ and $z_2 = n+m+1$.
+
+For all integer values of both $z_1$ and $z_2$, the integral evaluates to 0 as sin returns 0 for all integer values of $\pi$ and 0, therefore confirming orthogonality.
+
+\subsubsection*{Problem 11}
+
+
+$$\int_1^{e^\pi} \frac{1}{x^3} \cdot xsin\left(n \ln x\right) \cdot xsin\left(m \ln x\right) dx$$
+
+We let $u = \ln x$ and $du = \frac{1}{x}$ and $z_1 = n-m$ and $z_2 = n+m$, thus
+
+\begin{align*}
+&\frac{1}{2} \int_0^{\pi} cos\left(u\left[z_1\right]\right)-cos\left(u\left[z_2\right]\right) du \\
+&\frac{1}{2} \left[ \frac{sin\left(u\left(z_1\right)\right)}{z_1}-\frac{sin\left(u\left(z_2\right)\right)}{z_2}\right]\Bigr|_0^{\pi} \\
+&\frac{1}{2} \left[ \frac{sin\left(\pi\left(z_1\right)\right)}{z_1} - \frac{sin\left(\pi\left(z_2\right)\right)}{z_2}\right] = 0 \Bigr| z_1, z_2 \in\mathbb{R}
+\end{align*}
+Clearly, for all integers of both $z_1$ and $z_2$, the answer will be 0, thus proving orthogonality.
+
 \end{document}
