@@ -1,0 +1,136 @@
+
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{hyperref}
+\usepackage[]{cancel}
+\usepackage[]{xcolor}
+\usepackage[]{tabularx}
+\usepackage[]{fancyhdr}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\title{\vspace{-4cm}MTH30002 - Differential Equations \\Assignment 7}
+\author{Joshua Rogers}
+\lhead{MTH30002 Assignment 7}
+\rhead{Joshua Rogers 101096819}
+\date\today
+
+\begin{document}
+\maketitle
+
+\section*{Problem 3.8}
+
+Develop a Fourier-Legendre series for
+
+\begin{equation}\label{38A}
+f(x) = x^3-x^2+x-3
+\end{equation}
+
+
+\subsection*{Answer}
+$$ \sum_{n=0}^{\infty} a_n P_n (x) $$
+$$ a_n = \frac{2n+1}{2} \int_{-1}^{1} f(x) P_n(x) dx $$
+
+\begin{tabular}{
+  |p{\dimexpr.1\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+  |p{\dimexpr.20\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+  |p{\dimexpr.90\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+  |p{\dimexpr.1\linewidth-2\tabcolsep-1.3333\arrayrulewidth}|
+  }
+  \hline
+  \centering $n$     & \centering $P_n$     & \centering integral & \centering\arraybackslash $a_n$     \\ \hline
+  $0$ & $1$ & $\frac{1}{2} \int_{-1}^{1} \left(x^3-x^2+x-1\right) dx$ & $\frac{-4}{3}$ \\ \hline
+  $1$ & $x$ & $\frac{3}{2} \int_{-1}^{1} \left(x^4-x^3+x^2-x\right) dx$ & $\frac{8}{5}$ \\ \hline
+  $2$ & $\frac{1}{2} \left(3x^2-1\right)$ & $\frac{5}{2} \cdot \frac{1}{2} \int_{-1}^{1} \left(x^3-x^2+x-1\right)\left(3x^2-1\right) dx$ & $\frac{-2}{3}$ \\ \hline
+  $3$ & $\frac{1}{2} \left(5x^3-3x\right)$ & $\frac{7}{2} \cdot \frac{1}{2} \int_{-1}^{1} \left(x^3-x^2+x-1\right)\left(5x^3-3x\right) dx$ & $\frac{2}{5}$ \\ \hline
+\end{tabular}
+
+
+For higher powers of $n$, the coefficients are 0.
+
+Thus,
+
+$$
+f(x) = -\frac{4}{3} P_0(x) + \frac{8}{5} P_1(x) - \frac{2}{3} P_2(x) + \frac{2}{5} P_3(x)
+$$
+
+
+
+\section*{Problem 4.1}
+
+Find the following solutions to the following PDEs by treating them as ODEs.
+
+\begin{align}
+&u_{yy}=0 \label{41a} \\
+&u_{xy}=u_x \label{41b}
+\end{align}
+
+\subsection*{Answers}
+
+\subsubsection*{4.1 A}
+
+For $\eqref{41a}$ we let
+\begin{align*}
+&u_yy=0 \\
+&U^{''} = 0\\
+\int &U^{''} = \int 0 dy \\
+&U^{'} = C_1 \\
+\int &U^{'} dy = \int C_1 dy \\
+&U(y) = C_1y + C_2
+\end{align*}
+
+We allow $C_1 = f(x)$ and $C_2 = g(x)$, and thus obtain the solution
+
+$$ u(x,y) = f(x)y + g(x) $$
+
+\subsubsection*{4.2 B}
+
+For $\eqref{41b}$ we let $u_x = V$, thus we have $V_y = V$.
+
+We allow
+\begin{align*}
+\int &V^{'} dy = \int V dy \\
+&V\left(y\right) = C_1 e^{y} \\
+&V\left(x,y\right) = f(x) e^{y}
+\end{align*}
+
+Thus we obtain
+
+\begin{align*}
+&U_x = f(x) e^{y} \\
+\int &U^{'} dx = \int f(x) e^{y} \\
+&U = F\left(x\right) e^{y} + g\left(y\right)\Bigr| F\left(x\right) = \int f\left(x\right) dx
+\end{align*}
+
+Thus, we have
+$$u(x,y) = e^{y} \cdot F(x) + g(y)\Bigr| F\left(x\right) = \int f\left(x\right) dx$$
+
+
+\section*{Problem 4.2}
+
+Solve the following systems of PDEs:
+\begin{align*} u_{xx} = 0 && u_{xy} =0 \end{align*}
+
+\subsection*{Answer}
+
+\begin{align*}
+U_{xx} = 0 && u_{xy}=0\\
+u_x = b(y) && u_{y} = c(y)\\
+u(x,y) = b(y)x + a(y) && u(x,y) = C(y) + d(x)\Bigr|C(y) = \int c(y) dy
+\end{align*}
+
+Thus, we have the solution
+
+$$u(x,y) = a(y) + cx$$
+\end{document}
