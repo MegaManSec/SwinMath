@@ -1,5 +1,4 @@
 
-
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -8,6 +7,7 @@
 \usepackage[]{amsmath}
 \usepackage[]{hyperref}
 \usepackage[]{cancel}
+\usepackage[]{graphicx}
 \usepackage[]{xcolor}
 \usepackage[]{tabularx}
 \usepackage[]{fancyhdr}
@@ -65,8 +65,43 @@ $$
 f(x) = -\frac{4}{3} P_0(x) + \frac{8}{5} P_1(x) - \frac{2}{3} P_2(x) + \frac{2}{5} P_3(x)
 $$
 
+\section*{Problem 3.9}
 
+Develop a Fourier-Legendre series for
 
+\begin{equation}\label{39A}
+f(x) = sin(2\pi x)
+\end{equation}
+\subsection*{Answer}
+$$ \sum_{n=0}^{\infty} a_n P_n (x) $$
+$$ a_n = \frac{2n+1}{2} \int_{-1}^{1} f(x) P_n(x) dx $$
+
+\begin{align*}
+&a_0 = \frac{1}{2} \int_{-1}^{1} sin(2\pi x) P_0 dx = 0 \\
+&a_1 = \frac{3}{2} \int_{-1}^{1} sin(2\pi x) P_1 dx = \frac{-3}{2\pi} \\
+&a_2 = \frac{5}{2} \int_{-1}^{1} sin(2\pi x) P_2 dx = 0\\
+&a_3 = \frac{7}{2} \int_{-1}^{1} sin(2\pi x) P_3 dx = \frac{7(15-4\pi^2)}{8\pi^3} \\
+&a_4 = 0\\
+&a_5 = \frac{-11(16\pi^4-420\pi^2+945)}{32\pi^5}\\
+&a_6 = 0\\
+&a_7 = \frac{-11(64\pi^6-6048\pi^4+69300\pi^2-135135)}{128\pi^7}\\
+&a_8 = 0\\
+&a_9 = \frac{-11(256\pi^8-63360\pi^6+2162160\pi^4-18918900\pi^2+34459425)}{512\pi^9}
+\end{align*}
+
+$M=9$ gives a pretty good approximation (higher values don't change much.)
+
+Due to lack of space I will not write explicitly $f(x)$, but we have:
+$$ f(x) \approx a_1 P_1 + a_3 P_3 + a_5 P_5 + a_7  P_7 + a_9 P_9 $$
+
+On a common axis, for $M = [1,9]$
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{./out.jpg}
+\caption{Approximation of sums up to M=9}
+\end{figure}
+
+\pagebreak
 \section*{Problem 4.1}
 
 Find the following solutions to the following PDEs by treating them as ODEs.
@@ -114,7 +149,7 @@ Thus we obtain
 \end{align*}
 
 Thus, we have
-$$u(x,y) = e^{y} \cdot F(x) + g(y)\Bigr| F\left(x\right) = \int f\left(x\right) dx$$
+$$u(x,y) = e^{y} \cdot F(x) + g(y)$$
 
 
 \section*{Problem 4.2}
