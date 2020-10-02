@@ -39,6 +39,83 @@ $$
 \frac{1}{6} \int_{-3}^{3} -2 \cdot e^{-i \cdot n \cdot t \cdot \frac{\pi}{3}} dt = \frac{-2sin(\pi \cdot n)}{\pi \dot n} = 0
 $$
 
+$$
+\frac{1}{6} \int_{-3}^{3}  e^{-i \cdot n \cdot t \cdot \frac{\pi}{3}} \cdot \frac{e^{-3t}}{2} dt = \frac{sinh(9+i\cdot \pi \cdot n)}{2(9 + i\cdot \pi n)}
+$$
+
+and
+$$
+\frac{1}{6} \int_{-3}^{3}  e^{-i \cdot n \cdot t \cdot \frac{\pi}{3}} \cdot \frac{-e^{3t}}{2} dt = \frac{sinh(9-i\cdot \pi \cdot n)}{2(-9 + i\cdot \pi n)}
+$$
+
+Combining these results and rewriting we obtain
+
+$$
+\frac{9sinh(9)cos(\pi n)+\pi n cosh(9) sin(\pi n)}{2(\pi^2n^2+81)} - \frac{9sinh(9)cos(\pi n)+\pi n cosh(9) sin(\pi n)}{2(\pi^2n^2+81)}
+$$
+
+and
+
+$$
+\frac{i(9cosh(9)sin(\pi n) - \pi n sinh(9( cos(\pi n))}{2(\pi^2n^2+81)} + \frac{i(9cosh(9)sin(\pi n) - \pi n sinh(9( cos(\pi n))}{2(\pi^2n^2+81)}
+$$
+
+respectively.
+
+$$
+\frac{i(\cancelto{0}{9cosh(9)sin(\pi n)} - \pi n sinh(9) cos(\pi n))}{\pi^2n^2+81}
+$$
+
+$$
+C_n = \frac{i\pi n sinh(9)\left(-1\right)^{n+1}}{\pi^2n^2+81} \Bigr|n \neq 0
+$$
+
+$$
+C_0 = \frac{1}{6} \int_{-3}^{3} (-2-sinh(3t)) dt = -2
+$$
+
+$$
+\therefore f(t) \sim -2 + i \pi \cdot sinh(9) \sum_{n=-\infty}^{\infty} \frac{n\left(-1\right)^{n+1}}{\pi^2n^2+81} \cdot e^{i \cdot n \cdot t \cdot \frac{\pi}{3}} \Bigr|n \neq 0
+$$
+
+Alternatively, we could have let $h(t) = -2$ and $g(t) = -sinh(3t)$ and proceeded accordingly, which would give the same result.
+
+\subsection*{B}
+
+We solve this section using the solution from part C (instead of using part A).
+
+$$\frac{1}{T} \int_{-3}^{3} f(t)^2dt = \frac{1}{4} a_0^2 + \frac{1}{2} \sum_{n=1}^{\infty} \left(a_n^2+b_n^2\right)$$
+$$\frac{1}{6} \int_{-3}^{3} f(t)^2dt = \frac{1}{4} (-4)^2 + \frac{1}{2} \sum_{n=1}^{\infty} \left(b_n^2\right)$$
+
+$$
+\int_{-3}^{3} f(t)^2 dt = \frac{6}{4} \cdot (-4)^2 + 3 \sum_{n=1}^{\infty} \frac{4 n^2 \pi^2 \cdot sinh^2(9)}{(81+n^2\pi^2)^2}
+$$
 
 
+
+Thus, we have
+$$
+\int_{-3}^{3} f(t)^2 dt = 24 + 12 \pi^2 \cdot sinh^2(9) \sum_{n=1}^{\infty} \frac{n^2}{(81+n^2\pi^2)^2}
+$$
+
+\subsection*{C}
+We note that $a_0 = 2C_0=-4$. 
+
+Likewise, we obtain $a_n = C_n + C_{-n} = 0\Bigr| n\neq 0$. This result is expected as we note that $-sinh(3t)$ is odd, thus the $a_n$s cancel.
+$$
+\frac{i\pi n sinh(9)\left(-1\right)^{n+1}}{\pi^2n^2+81} + \frac{-n i \pi sinh(9)\left(-1\right)^{1-n}}{\pi^2(-n)^2+81} = 0
+$$
+
+$$
+b_n = i \left[ \frac{- i \pi n\cdot sinh(9)(-1)^{n}}{\pi^2n^2+81} - \frac{- i \pi \cdot sinh(9) (-1)^{-n}}{\pi^2(-n)^2+81}\right] = \frac{2\pi n \cdot sinh(9) (-1)^n}{\pi^2n^2+81}
+$$
+
+Thus, we have
+
+$$
+f(t) \sim -2 + 2\pi\sinh\left(9\right)\sum_{n=1}^{\infty}\frac{n\left(-1\right)^{n}}{\pi^{2}n^{2}+81}\sin\left(n\cdot t\cdot\frac{\pi}{3}\right)
+$$
+
+
+Which converges impossibly slow: \href{https://www.desmos.com/calculator/kahvvfuxgb}{desmos}
 \end{document}
