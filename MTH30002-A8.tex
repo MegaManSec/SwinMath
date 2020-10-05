@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{maplestd2e}
+\usepackage[]{amsthm}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{hyperref}
+\usepackage[]{cancel}
+\usepackage[]{graphicx}
+\usepackage[]{xcolor}
+\usepackage[]{tabularx}
+\usepackage[]{fancyhdr}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\title{\vspace{-4cm}MTH30002 - Differential Equations Assignment 7}
+\author{Joshua Rogers}
+\lhead{MTH30002 Assignment 8}
+\rhead{Joshua Rogers 101096819}
+\date\today
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 4.3}
+
+Find and show the D'Alembert solution for the following equations.
+
+\begin{equation}\label{43a}
+u(x,0) = x(1-x);
+\end{equation}
+
+\begin{equation}\label{43b}
+u(x,0) = \begin{cases}
+x & 0 \leq x \leq \frac{1}{4} \\
+\frac{1}{2} - x & \frac{1}{4} < x < \frac{1}{2} \\
+0 & \frac{1}{2} \leq x \leq 1
+   \end{cases}
+\end{equation}
+
+\subsection*{Answers}
+\subsubsection*{Part A}
+
+To solve for $\eqref{43a}$, we find the 2L-periodic odd extension of $f(x)$, noting that $-f(-x)$ will produce this. We have $L=1$ and $c=1$ with an initial velocity of $0$.
+$$
+f_o (x) = \begin{cases}
+x+x^2 & -1 \leq x \leq 0 \\
+x-x^2  & 0 < x \leq 1 \\
+f_o (x+2) & \forall x
+   \end{cases}
+$$
+
+
+We then find
+$$
+u(x,t) = \frac{1}{2} \left[ f_o(x+t)+f_o(x-t)\right]
+$$
+
+We could manually compute these, by solving
+$$
+f_{plus}(x+t) =
+\begin{cases}
+(x+t)+(x+t)^2, & -1-t \leq x \leq 0-t \\
+(x+t)-(x+t)^2, & -t \leq x \leq 1-t \\
+f_{plus}(x+t+2), & \forall x
+   \end{cases}
+$$
+and
+$$
+f_{neg}(x-t) =
+\begin{cases}
+(x-t)+(x-t)^2, & -1 +t \leq x \leq 0+t \\
+(x-t)-(x-t)^2, & t \leq x \leq 1+1 \\
+f_{neg}(x-t+2), & \forall x
+   \end{cases}
+$$
+
+Then taking note of the domain restrictions and only focusing on those on [0,1]. That would take a long time, so instead we plot u(x,t) using Maple, for $t=0,0.2,0.4,0.5,0.6,0.8,1$ on $x \in [0,1]$:
+
+\mapleplot{./static/josh1plot2d2.eps}
+\mapleplot{./static/josh1plot2d4.eps}
+\mapleplot{./static/josh1plot2d6.eps}
+\mapleplot{./static/josh1plot2d7.eps}
+\mapleplot{./static/josh1plot2d8.eps}
+\mapleplot{./static/josh1plot2d10.eps}
+\mapleplot{./static/josh1plot2d12.eps}
+
+We then show the superposition of $\frac{1}{2} f_o(x-t)$ and $\frac{1}{2} f_o(x+t)$
+
+\mapleplot{./static/3plot2d2.eps}
+\mapleplot{./static/3plot2d4.eps}
+\mapleplot{./static/3plot2d6.eps}
+\mapleplot{./static/3plot2d7.eps}
+\mapleplot{./static/3plot2d8.eps}
+\mapleplot{./static/3plot2d10.eps}
+\mapleplot{./static/3plot2d12.eps}
+
+
+\subsubsection*{Part B}
+
+We find the 2L-periodic odd extension of $f(x)$ for $\eqref{43b}$.
+
+$$
+f_o(x) = \begin{cases}
+0 & -1 \leq x \leq -\frac{1}{2} \\
+-x-\frac{1}{2} & -\frac{1}{2} < x \leq -\frac{1}{4}\\
+x & -\frac{1}{4} < x \leq \frac{1}{4} \\
+\frac{1}{2} -x & \frac{1}{4} < x \leq \frac{1}{2} \\
+0 & \frac{1}{2} < x \leq 1 \\
+f_o (x+2) & \forall x 
+   \end{cases}
+$$
+
+$$u(x,t) = \frac{1}{2} \left[ f_o(x+t)+f_o(x-t)\right]$$
+
+\mapleplot{./static/2plot2d2.eps}
+\mapleplot{./static/2plot2d4.eps}
+\mapleplot{./static/2plot2d6.eps}
+\mapleplot{./static/2plot2d7.eps}
+\mapleplot{./static/2plot2d8.eps}
+\mapleplot{./static/2plot2d10.eps}
+\mapleplot{./static/2plot2d12.eps}
+
+
+
+Showing the superposition:
+\mapleplot{./static/1plot2d2.eps}
+\mapleplot{./static/1plot2d4.eps}
+\mapleplot{./static/1plot2d6.eps}
+\mapleplot{./static/1plot2d7.eps}
+\mapleplot{./static/1plot2d8.eps}
+\mapleplot{./static/1plot2d10.eps}
+\mapleplot{./static/1plot2d12.eps}
+
+
+\end{document}
