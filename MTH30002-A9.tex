@@ -1,0 +1,229 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{maplestd2e}
+\usepackage[]{amsthm}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{hyperref}
+\usepackage[]{cancel}
+\usepackage[]{graphicx}
+\usepackage[]{xcolor}
+\usepackage[]{tabularx}
+\usepackage[]{fancyhdr}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\title{\vspace{-4cm}MTH30002 - Differential Equations Assignment 9}
+\author{Joshua Rogers}
+\lhead{MTH30002 Assignment 9}
+\rhead{Joshua Rogers 101096819}
+\date\today
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 4.4}
+We have the following: $L=10cm$, $p = 10.6 gm \cdot cm^{-3}$, $k=1.04 cal/cm S^oC$, $\sigma = 0.056 cal/gm^oc$.
+
+and
+
+$u(0,t) = 0$, $u(10,t)=0$.
+
+Noting that $f(x)$ can be odd-extended, and then taking the fourier series times the exponential decay we have
+
+$$u(x,t) = \sum_{n=1}^{\infty} B_n sin\left( \frac{\pi n x}{L}\right) e^{-\frac{k n^2 \pi^2 t}{p \sigma L^2}}$$
+
+$$B_n = \frac{2}{L} \int_0^L f(x) sin\left(\frac{n \pi x}{L}\right) dx$$
+
+Plugging all our values in, we obtain
+
+Using integration by parts
+$$
+\frac{2}{10} \int_0^{5} 0.2x \cdot sin\left(\frac{n \pi x}{10}\right)dx + \frac{2}{10} \int_5^{10} 0 dx = - \frac{2\left(\pi n cos(\frac{\pi n}{2}) -2sin(\frac{\pi n}{2})\right)}{\pi^2n^2}
+$$
+
+Thus we have
+$$y=\left\{0\le x\le10:\sum_{n=1}^{\infty}-\frac{2\left(\pi n\cos\left(\frac{\pi n}{2}\right)-2\sin\left(\frac{\pi n}{2}\right)\right)}{\pi^{2}n^{2}}\sin\left(\frac{n\pi x}{10}\right)\cdot e^{\left(-1.04\cdot n^{2}\cdot\pi^{2}\cdot\frac{t}{10.6\cdot0.056\cdot10^{2}}\right)}\right\}$$
+
+This can be graphed on \href{https://www.desmos.com/calculator/39jwqygv96}{desmos}. We can see that very quickly, the heat radiates towards the colder side of the bar, at the same time as being affected by the 0 degree endpoints.
+
+\section*{Exercise 4.5}
+
+$$
+u_x(0,t) = u_x(L,t) =0.
+$$
+
+\begin{equation}\label{1}
+\frac{du}{dt} = c^2 \frac{du^2}{dx^2}
+\end{equation}
+$$
+u(x,0) = f(x)
+$$
+
+Using separation of variables, we assume
+\begin{equation}\label{2}
+u(x,t) = X(x)T(t)
+\end{equation}
+Placing this into $\eqref{1}$ we obtain
+$$
+\frac{T^{'}}{c^2T} = \frac{x^{''}}{x}
+$$
+
+or rather
+
+$$
+T^{'}x - c^2X^{''}T=0
+$$
+Let a separable constant be $-\lambda$
+
+\begin{align*}
+&T^{'} + \lambda c^2 T =0 \\
+&X^{''} + \lambda X=0
+\end{align*}
+
+Solving for $\lambda=0$
+
+\begin{align*}
+X^{'} &= \int 0 dx =  A \\
+X &= \int \int X^{''} dx = \int \int 0 dx = Ax+B
+\end{align*}
+
+From our original conditions we know that $X'(0) =0$ and $X'(L)=0$
+Thus we $0=A$, thus $X=B$. is an eigen function. 
+
+
+For $\lambda <0$, we let $\lambda = -k^2$
+$$
+X''-k^2X=0
+$$
+thus
+$$X = C_1e^{kx} + C_2e^{-kx}$$
+Using the boundary conditions $x^{'}(0)=0$ and $x^{'}(L)=0$ we determine for $k \neq 0$
+
+$$\det \left( \begin{bmatrix} 1 & 1 \\ e^{kL} & e^{-kL} \end{bmatrix} \right) \neq 0$$
+
+Thus $\lambda <0$ does not give us any eigenfunctions.
+
+for $\lambda > 0$ we let $\lambda = k^2$
+
+$$ X''+k^2X=0$$
+
+thus
+
+$$X = Acos(kx)+Bsin(kx)$$
+
+$X'(0)=0$ and $X'(L)=0$:
+$$\det \left( \begin{bmatrix} 1 & 0 \\ cos(kL) & sin(kL) \end{bmatrix} \right) = 0$$
+
+We have
+
+$$sin(kL) =0$$ thus $$k=\frac{\pi n}{L}$$
+
+We have solved $$ \lambda = \frac{\pi^2n^2}{L^2} $$
+
+\begin{equation}\label{A}
+X_n = cos(\frac{\pi n x}{L})
+\end{equation}
+
+The sin terms cancel out.
+
+Solving for function $T$ we note
+
+$$\frac{T^{'}}{T} + \frac{\pi^2n^2c^2}{L} = 0$$
+
+\begin{equation}\label{B}
+T_n = \cdot e^{-\frac{\pi^2 n^2 c^2}{L^2} t}
+\end{equation}
+
+thus using $\eqref{2}$, $\eqref{A}$, and $\eqref{B}$ we obtain
+
+
+$$
+u_n(x,t) = T(t) \cdot X(x) = C_n cos(\frac{\pi n x}{L}) \cdot e^{-\frac{\pi^2 n^2 c^2}{L^2} t}
+$$
+
+Clearly, we have $u_0(x,t) = e^0 \cdot cos(0) \cdot C_0 = C_0$.
+
+Thus
+
+$$ u(x,t) = C_0 + \sum_{n=1}^{\infty} u_n(x,t) \cdot C_n $$
+
+Likewise,
+
+$$ u(0,t) = f(x) = C_0 + \sum_{n=1}^{\infty} C_n cos\left(\frac{\pi n x}{L} \right) \cdot e^0$$
+
+This is clearly the even expansion of $f(x)$ on $[0,L]$ where $C_0 = \frac{1}{L} \int_0^L f(t)dt$ and $C_n = \frac{2}{L} \int_0^{L} f(t) cos\left(\frac{\pi n t}{L}\right) dt$
+
+Thus, we have shown
+
+$$
+u(x,t) = \frac{1}{L} \int_0^L f(t) dt + \sum_{n=1}^{\infty} \frac {2}{L} \left[ \int_0^L f(t) cos\left(\frac{t \pi n}{L}\right)  dt \right] cos\left(\frac{t \pi n}{L}\right) e^{-\frac{\pi^2 n^2 c^2}{L^2} t}
+$$
+
+
+
+\section*{Exercise 4.6}
+
+We have $L=\pi$, $f(x)=1$, $c=1$.
+
+$$
+A_0 = \frac{1}{\pi} \int_0^{\pi} 1dx = 1
+$$
+
+$$
+A_n = \frac{2}{\pi} \int_0^{\pi} cos\left(\frac{n \pi x}{pi}\right) = \frac{2sin(n \pi)}{\pi n} = 0\Bigr| x \in R
+$$
+
+Thus we have
+
+$$
+u(x,t) = 1
+$$
+
+This rod is fully insulated, and thus, the temperature is constant.
+
+\section*{Exercise 4.7}
+
+\begin{equation}\label{10}
+V_t = c^2 V_xx- \beta v
+\end{equation}
+
+\begin{align}
+&v(x,t) = u(x,t)w(t) \label{14}\\
+&v_t = u_tw(t) + uw^{'}(t) \label{12} \\
+&v_{xx} = u_{xx}w(t) \label{13}
+\end{align}
+
+Equating $\eqref{10}$ with $\eqref{12}$ and $\eqref{13}$
+
+\begin{align*}
+u_t w(t) + u w^{'} (t) = c^2u_{xx} w(t) - \beta u w \\
+u_t w - c^2 u_{xx}  + \beta u w = -uw^{'} \\
+\frac{w^{'}}{w} = \frac{u_t -c^2 u_{xx} + \beta u}{-u} \\
+\frac{w^{'}}{w} = -\beta - \frac{u_t-c^2u_{xx}}{-u}
+\end{align*}
+
+Thus
+
+$$
+w^{'} = -\beta w
+$$
+which solves to
+$$
+e^{-\beta t}
+$$
+Using equation $\eqref{14}$, we obtain
+
+$$v(x,t) = u(x,t) \cdot e^{-\beta t}$$
+
+This shows that heat decays exponentially to a steady solution. Knowledge of initial conditions are lost, and we cannot 'tell the past temperature'
+
+
+\end{document}
