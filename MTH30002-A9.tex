@@ -28,144 +28,202 @@
 
 \begin{document}
 \maketitle
-
 \section*{Exercise 4.4}
-We have the following: $L=10cm$, $p = 10.6 gm \cdot cm^{-3}$, $k=1.04 cal/cm S^oC$, $\sigma = 0.056 cal/gm^oc$.
-
-and
-
-$u(0,t) = 0$, $u(10,t)=0$.
-
-Noting that $f(x)$ can be odd-extended, and then taking the fourier series times the exponential decay we have
-
-$$u(x,t) = \sum_{n=1}^{\infty} B_n sin\left( \frac{\pi n x}{L}\right) e^{-\frac{k n^2 \pi^2 t}{p \sigma L^2}}$$
-
-$$B_n = \frac{2}{L} \int_0^L f(x) sin\left(\frac{n \pi x}{L}\right) dx$$
-
-Plugging all our values in, we obtain
-
-Using integration by parts
-$$
-\frac{2}{10} \int_0^{5} 0.2x \cdot sin\left(\frac{n \pi x}{10}\right)dx + \frac{2}{10} \int_5^{10} 0 dx = - \frac{2\left(\pi n cos(\frac{\pi n}{2}) -2sin(\frac{\pi n}{2})\right)}{\pi^2n^2}
-$$
-
-Thus we have
-$$y=\left\{0\le x\le10:\sum_{n=1}^{\infty}-\frac{2\left(\pi n\cos\left(\frac{\pi n}{2}\right)-2\sin\left(\frac{\pi n}{2}\right)\right)}{\pi^{2}n^{2}}\sin\left(\frac{n\pi x}{10}\right)\cdot e^{\left(-1.04\cdot n^{2}\cdot\pi^{2}\cdot\frac{t}{10.6\cdot0.056\cdot10^{2}}\right)}\right\}$$
-
-This can be graphed on \href{https://www.desmos.com/calculator/39jwqygv96}{desmos}. We can see that very quickly, the heat radiates towards the colder side of the bar, at the same time as being affected by the 0 degree endpoints.
-
-\section*{Exercise 4.5}
-
-$$
-u_x(0,t) = u_x(L,t) =0.
-$$
 
 \begin{equation}\label{1}
 \frac{du}{dt} = c^2 \frac{du^2}{dx^2}
 \end{equation}
+
+Instead of $c^2$ we use $k$, as it is easier to keep track of.
+
 $$
 u(x,0) = f(x)
 $$
 
 Using separation of variables, we assume
 \begin{equation}\label{2}
-u(x,t) = X(x)T(t)
+u(x,t) = T(x)G(t)
 \end{equation}
-Placing this into $\eqref{1}$ we obtain
-$$
-\frac{T^{'}}{c^2T} = \frac{x^{''}}{x}
-$$
-
-or rather
-
-$$
-T^{'}x - c^2X^{''}T=0
-$$
-Let a separable constant be $-\lambda$
-
+Placing this into $\eqref{1}$ and assuming a separabble constant of $\lambda$ we obtain
 \begin{align*}
-&T^{'} + \lambda c^2 T =0 \\
-&X^{''} + \lambda X=0
+&G^{'} + k\lambda G = 0\\
+&T^{''} + \lambda T =0
 \end{align*}
+
+Noting that $T(0)=0$ and $T(L)=0$, we solve for $T(x)$.
 
 Solving for $\lambda=0$
 
 \begin{align*}
-X^{'} &= \int 0 dx =  A \\
-X &= \int \int X^{''} dx = \int \int 0 dx = Ax+B
+T^{'} &= \int 0 dx =  A \\
+T &= \int \int T^{''} dx = \int \int 0 dx = Ax+B
 \end{align*}
 
-From our original conditions we know that $X'(0) =0$ and $X'(L)=0$
-Thus we $0=A$, thus $X=B$. is an eigen function. 
+$T(0) = 0 =B \therefore B = 0$.
+
+
+$T(L) = AL + B = 0 \therefore A =0$.
+
+
+Thus, $\lambda =0$ is not an eigenvalue.
 
 
 For $\lambda <0$, we let $\lambda = -k^2$
 $$
-X''-k^2X=0
+T''-k^2T=0
 $$
-thus
-$$X = C_1e^{kx} + C_2e^{-kx}$$
-Using the boundary conditions $x^{'}(0)=0$ and $x^{'}(L)=0$ we determine for $k \neq 0$
 
-$$\det \left( \begin{bmatrix} 1 & 1 \\ e^{kL} & e^{-kL} \end{bmatrix} \right) \neq 0$$
+$$T(x) = Ae^{kx} + Be^{-kx}$$
+
+Using the boundary conditions, we realize that 
+$$\det \left( \begin{bmatrix} 1 & 1 \\ e^{kL} & e^{-kL} \end{bmatrix} \right) \neq 0 \Bigr| k \neq 0 $$
 
 Thus $\lambda <0$ does not give us any eigenfunctions.
 
-for $\lambda > 0$ we let $\lambda = k^2$
 
-$$ X''+k^2X=0$$
+For $\lambda > 0$ we let $\lambda = k^2$
+
+$$ T''+k^2T=0$$
 
 thus
 
-$$X = Acos(kx)+Bsin(kx)$$
+$$T(x) = Acos(kx)+Bsin(kx)$$
 
-$X'(0)=0$ and $X'(L)=0$:
+$T(0)=0$ and $T(L)=0$:
 $$\det \left( \begin{bmatrix} 1 & 0 \\ cos(kL) & sin(kL) \end{bmatrix} \right) = 0$$
 
 We have
 
 $$sin(kL) =0$$ thus $$k=\frac{\pi n}{L}$$
 
-We have solved $$ \lambda = \frac{\pi^2n^2}{L^2} $$
+We have solved $$ \lambda_n = \frac{\pi^2n^2}{L^2} $$
 
 \begin{equation}\label{A}
-X_n = cos(\frac{\pi n x}{L})
+T_n(x) = sin(\frac{\pi n x}{L}) \Bigr| n \geq 1
 \end{equation}
 
-The sin terms cancel out.
 
-Solving for function $T$ we note
+Solving for function $G$ we note
 
-$$\frac{T^{'}}{T} + \frac{\pi^2n^2c^2}{L} = 0$$
+
+$$G^{''}+k\lambda_nG = 0$$
+
+thus
 
 \begin{equation}\label{B}
-T_n = \cdot e^{-\frac{\pi^2 n^2 c^2}{L^2} t}
+G(t) = Ae^{-k\lambda_nt}
 \end{equation}
 
 thus using $\eqref{2}$, $\eqref{A}$, and $\eqref{B}$ we obtain
 
 
 $$
-u_n(x,t) = T(t) \cdot X(x) = C_n cos(\frac{\pi n x}{L}) \cdot e^{-\frac{\pi^2 n^2 c^2}{L^2} t}
+u_n(x,t) = G(t) \cdot T(x) = C_n e^{-t\left(\frac{c \pi n}{L}\right)^2} \cdot sin\left(\frac{\pi n x}{L}\right) \Bigr| n \geq 1
 $$
 
-Clearly, we have $u_0(x,t) = e^0 \cdot cos(0) \cdot C_0 = C_0$.
+
+We have now found $u_n(x,t)$.
+
+This is clearly the solution to the odd expansion of a function $f(t)$. Using the principle of superposition, we have the solution:
+
+$$u(x,t) = \sum_{n=1}^{\infty} C_n e^{-t\left(\frac{c \pi n}{L}\right)^2} \cdot sin\left(\frac{\pi n x}{L}\right) $$
+
+where
+
+$$C_n = \frac{2}{L} \int_{0}^{L} sin(\pi n t)f(t)dt$$
+
+
+
+Finally, we find the result for the given information.
+
+$$C_n = \frac{2}{10} \int_{0}^{5} 0.2t \cdot sin\left(\frac{n \pi t}{10}\right) dt + \frac{2}{10} \int_{5}^{10} 0 dt$$
+Using integration by parts, obtain
+$$C_n = \frac{-2cos\left(\frac{\pi n}{2}\right)}{\pi n} + \frac{4sin\left(\frac{\pi n}{2}\right)}{\pi^2 n^2}$$
+
+The first part of $C_n$ we only want $C_{2n}$ as the other terms are zero. For the second part, we want $C_{2n-1}$.
 
 Thus
+$$C_{2n} = \frac{-2 (-1)^n}{2\pi n}$$
 
-$$ u(x,t) = C_0 + \sum_{n=1}^{\infty} u_n(x,t) \cdot C_n $$
+$$C_{2n-1} = \frac{ 4(-1)^{n+1}}{\pi^2(2n-1)^2}$$
 
-Likewise,
+Putting this all together, we obtain
 
-$$ u(0,t) = f(x) = C_0 + \sum_{n=1}^{\infty} C_n cos\left(\frac{\pi n x}{L} \right) \cdot e^0$$
+$$u(x,t) = \sum_{n=1}^{\infty} \left[ \frac{-2(-1)^n}{2\pi n} e^{-t\left(\frac{2kn\pi}{L}\right)^2} sin\left(\frac{2xn\pi}{L}\right) + \frac{4\left(-1\right)^{n+1}}{\pi^2 (2n-1)^2} e^{-t\left(\frac{(2n-1)k\pi)^2}{L}\right)} sin\left(\frac{(2n-1)x\pi}{L}\right)\right]$$
 
-This is clearly the even expansion of $f(x)$ on $[0,L]$ where $C_0 = \frac{1}{L} \int_0^L f(t)dt$ and $C_n = \frac{2}{L} \int_0^{L} f(t) cos\left(\frac{\pi n t}{L}\right) dt$
+Noting that $k=\frac{K}{cp} = \frac{1.04}{0.056 \cdot 10.6}$ we graph this on \href{https://www.desmos.com/calculator/aoywxidecv}{desmos}. Clearly, the temperature drops very quickly and the heat moves from the warmer side to the colder side, while also getting cooler at the ends due to the 0C endpoints (losing heat).
 
-Thus, we have shown
+\section*{Exercise 4.5}
+
+Here, we have $T^{'}(0)=0$ and $T^{'}(L)=0$. This is indicative of a fully insulated metal rod that retains heat.
+
+Using the solution from the previous example, we have
+
+Using separation of variables, we assume
+\begin{equation}\label{3}
+u(x,t) = T(x)G(t)
+\end{equation}
+Placing this into $\eqref{1}$ and assuming a separabble constant of $\lambda$ we obtain
+\begin{align*}
+&G^{'} + k\lambda G = 0\\
+&T^{''} + \lambda T =0
+\end{align*}
+
+We once again solve for $T(x)$, however with $T^{'}(0)=0$ and $T^{'}(L)=0$.
+
+For $\lambda = 0$
+
+$$\int T^{''} dx = \int T^{'}(x) dx  = Ax +B$$
+$$T^{'}(0) = A = 0$$
+$$T^{'}(L) = A = 0$$
+
+Thus $T_0(x) = 1 \cdot C_n\Bigr|n=0$ is an eigenfunction.
+
+
+For $\lambda > 0$ we let $\lambda = k^2$
+$$T(x) = Acos(k x) + Bsin(k x)$$
+$$T^{'}(x) = -kAsin(kx)+kBcos(kx)$$
+
+$$T^{'}(0) = -kAsin(0)+Bkcos(0) = Bk = 0 = B$$
+$$T^{'}(L) = -kAsin(kL)+Bkcos(kL) = 0$$
+
+$$\det \left( \begin{bmatrix} 0 & 1 \\ -ksin(kL) & kcos(kL) \end{bmatrix} \right) = 0 \Bigr| k \neq 0 $$
+
+$$kL=\pi n$$
+
+Thus we have found our eigenvalue and eigenfunction.
+$$\lambda_n = \left(\frac{n \pi}{L}\right)^2$$
+$$T_n(x) = cos\left(\frac{n \pi x}{L}\right) \Bigr| n \geq 1$$
+
+
+Finally for $\lambda < 0$ we let $\lambda = -k^2$.
+
+$$T(x) = Ae^{kx} + Be^{-kx}$$
+
+$$T'(x) = kAe^{kx} - kBe^{-kx}$$
+$$T^{'}(0) = kA - kB = A-B = 0 \therefore A=B$$
+
+Thus there are no eigenfunctions to be found for this case.
+
+We have from $\eqref{2}$ the function $G(T)$:
+$$G(t) = Ae^{-k\lambda_nt}$$
+
+Thus we have
 
 $$
-u(x,t) = \frac{1}{L} \int_0^L f(t) dt + \sum_{n=1}^{\infty} \frac {2}{L} \left[ \int_0^L f(t) cos\left(\frac{t \pi n}{L}\right)  dt \right] cos\left(\frac{t \pi n}{L}\right) e^{-\frac{\pi^2 n^2 c^2}{L^2} t}
+u_n(x,t) = G(t) \cdot T(x) = C_n e^{-t\left(\frac{c \pi n}{L}\right)^2} \cdot cos\left(\frac{\pi n x}{L}\right) \Bigr| n \geq 0
 $$
+
+For $n=0$ this will simply be equal to $C_n$.
+
+This is clearly the even expansion of a function, $f(t)$ where $C_0 = \frac{1}{L} \int_{0}^{L} f(t) dt$.
+
+Using the superposition principle,
+
+$$u(x,t) = C_0 + \sum_{n=1}^{\infty} C_n e^{-t\left(\frac{c \pi n}{L}\right)^2} \cdot cos\left(\frac{\pi n x}{L}\right) $$
+
+
+$C_o$ here represents the initial heat radiation.
 
 
 
@@ -187,7 +245,7 @@ $$
 u(x,t) = 1
 $$
 
-This rod is fully insulated, and thus, the temperature is constant.
+This rod is fully insulated, and thus, the temperature is constant, as expected; i.e. no loss and no gain.
 
 \section*{Exercise 4.7}
 
@@ -224,6 +282,5 @@ Using equation $\eqref{14}$, we obtain
 $$v(x,t) = u(x,t) \cdot e^{-\beta t}$$
 
 This shows that heat decays exponentially to a steady solution. Knowledge of initial conditions are lost, and we cannot 'tell the past temperature'
-
 
 \end{document}

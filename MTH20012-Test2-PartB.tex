@@ -110,13 +110,13 @@ $$
 a_n = \frac{5}{\pi^2n^2} \left[ \left(-1\right)^n - 1 \right]
 $$
 
-Noting that the even terms here are 0, we let $n=2n+1$ and thus obtain
+Noting that the even terms here are 0, we let $n=2n-1$ and thus obtain
 $$
-a_{2n+1} = \frac{-10}{\left(2n+1\right)^2\pi^2}
+a_{2n-1} = \frac{5 \cdot -2}{\left(2n-1\right)^2\pi^2}
 $$
 
 
-Similarly for $b_n$, we obtain
+Similarly for $b_n$, doing all of the above tedious calculations, we obtain
 $$\frac{4}{\pi n} + \frac{cos(2\pi n)}{\pi n}$$
 or rather
 $$
@@ -126,7 +126,7 @@ $$
 Thus we have our full-range Fourier series for $f(t)$.
 
 $$
-f(t) \sim \frac{11}{4} + \sum_{n=1}^{\infty}\frac{5}{\pi n}\sin\left(\frac{n\pi t}{6}\right)+\sum_{n=0}^{\infty}\frac{-10}{\left(2n+1\right)^{2}\pi^{2}}\cos\left(\frac{\left(2n+1\right)\pi t}{6}\right)
+f(t) \sim \frac{11}{4}+\frac{5}{\pi}\sum_{n=1}^{\infty}\left(\frac{1}{n}\sin\left(\frac{n\pi t}{6}\right)+\frac{-2}{\left(2n-1\right)^{2}\pi}\cos\left(\frac{\left(2n-1\right)\pi t}{6}\right)\right)
 $$
 \subsection*{E}
 
@@ -183,13 +183,13 @@ a_n  =\frac{20}{\pi^2n^2} \left(-1\right)^{n+1}
 $$
 and
 $$
-a_{2n} = \frac{5}{\pi^2 n^2} \left(-1\right)^{n}
+a_{2n} = \frac{20}{\pi^2 (2n)^2} \left(-1\right)^{n}
 $$
 
 Thus we have
 
 $$
-f_e(t) \sim \frac{11}{4}+\sum_{n=1}^{\infty}\frac{20}{n^{2}\pi^{2}}\left(-1\right)^{\left(n+1\right)}\cos\left(\frac{n\pi t}{12}\right) + \sum_{n=1}^{\infty}\frac{5}{n^{2}\pi^{2}}\left(-1\right)^{n}\cos\left(\frac{n\pi t}{6}\right)
+f_e(t) \sim \frac{11}{4}+\frac{20}{\pi^{2}}\sum_{n=1}^{\infty}\left(\frac{\left(-1\right)^{\left(n+1\right)}}{n^{2}}\cos\left(\frac{n\pi x}{12}\right)+\frac{\left(-1\right)^{n}}{4n^{2}}\cos\left(\frac{n\pi x}{6}\right)\right)
 $$
 
 \subsection*{G}
@@ -236,12 +236,12 @@ b_n = \frac{2}{\pi n} \left[\left(-1\right)^n+4\right]
 $$
 
 $$
-b_{2n+1} = \frac{20\left(-1\right)^n}{\pi^2\left(2n+1\right)^2}
+b_{2n-1} = \frac{20\left(-1\right)^{n+1}}{\pi^2\left(2n-1\right)^2}
 $$
 Thus we have
 
 $$
-f_o(t) \sim \sum_{n=1}^{\infty} \frac{2\left[\left(-1\right)^n+4\right]}{\pi n} sin\left(\frac{n \pi t}{12}\right) + \sum_{n=0}^{\infty} \frac{20\left(-1\right)^n}{\pi^2\left(2n+1\right)^2} sin\left(\frac{\left(2n+1\right) \pi t}{12}\right)
+f_o(t) ~ \frac{2}{\pi}\sum_{n=1}^{\infty}\left(\frac{10\left(-1\right)^{\left(n+1\right)}}{\pi\left(2n-1\right)^{2}}\sin\left(\frac{\left(2n-1\right)\pi t}{12}\right)+\frac{\left(\left(-1\right)^{n}+4\right)}{n}\sin\left(\frac{n\pi t}{12}\right)\right)
 $$
 
 
@@ -249,6 +249,6 @@ $$
 
 The even extension converges fastest.  This is because there is the smallest discontinuity (it is continuous.)
 Likewise, plotting all three options on desmos, it is clear that the even extension converges faster; $a=4$ is sufficient compared to $a \approx 40$ for the others.
-See: \href{https://www.desmos.com/calculator/1twteyxxyg}{even}, \href{https://www.desmos.com/calculator/ao6mjhce0y}{odd}, \href{https://www.desmos.com/calculator/bk2vlfzv0c}{full}.
+See: \href{https://www.desmos.com/calculator/5vbrrqod2w}{even}, \href{https://www.desmos.com/calculator/dizmwfhtt9}{odd}, \href{https://www.desmos.com/calculator/glyqzp3gbf}{full}.
 
 \end{document}
