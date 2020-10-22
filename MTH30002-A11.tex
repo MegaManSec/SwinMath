@@ -41,14 +41,16 @@ u(0,y) = g_1(y) && u(L,y) = g_2(y)\\
 u(x,0) = f_1(x) && u(x,H) = f_2(x)
 \end{align*}
 
-and the rectangle given by
+and the disc given by
 \begin{align*}
 0\leq x \leq L,\\
 0 \leq y \leq H
 \end{align*}
 
+and clearly $L=H$ given this is a disk.
 
-Thus, we have
+
+Given the sum as specified before, we have 
 
 $$u(x,y) = u_1(x,y) + u_2(x,y) + u_3(x,y) + u_4(x,y)$$
 
@@ -56,7 +58,7 @@ Given our initial equation we thus have
 
 \begin{align*}
 &u_1(1,y) + u_2(1,y) + u_3(1,y) + u_4(1,y) \\
-&u_1(1,y) + u_2(1,0) + u_3(1,y) + u_4(1,H)
+&u_1(1,y) + u_2(1,0) + u_3(1,y) + u_4(1,L)
 \end{align*}
 Due to the domain restriction on $u(1,y)$ we thus have
 
@@ -65,6 +67,21 @@ $$110 + 0 + \frac{\pi}{2} - \frac{\pi}{2}$$
 Thus
 
 $$u(1,y) = 110$$.
+
+
+Alternatively, we could have just solved
+$$u(r,y) = a_0 + sum_{n=1}^{\infty} r^m A_m cos\left(ym\right)$$
+and solved for $A_m$, let $r=1$, we would then obtain
+
+$$u(1,y) = 55 - \frac{220}{\pi} \sum_{n=1}^{\infty} ..$$
+
+where the sum converges to $\frac{-\pi}{4}$
+
+thus
+
+$$u(1,y) = 55 - \frac{220}{\pi} \cdot \frac{-\pi}{4} = 110$$
+
+as expected.
 
 \section*{Exercise 5.4}
 The motion equation for a drum is given by
