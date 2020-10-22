@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{hyperref}
+\usepackage[]{cancel}
+\usepackage[]{graphicx}
+\usepackage[]{xcolor}
+\usepackage[]{tabularx}
+\usepackage[]{fancyhdr}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\title{\vspace{-4cm}MTH30002 - Differential Equations Assignment 11}
+\author{Joshua Rogers}
+\lhead{MTH30002 Assignment 11}
+\rhead{Joshua Rogers 101096819}
+\date\today
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 5.3}
+
+$$\delta^2u = \frac{d^2u}{dx^2} + \frac{d^2u}{dy^2} = 0$$
+$$u(x,y) = \sum_{n=1}^{\infty} u_n(x,y)$$
+
+
+Thus, given the four boundary conditions and the fact that $r<1$...
+
+\begin{align*}
+u(0,y) = g_1(y) && u(L,y) = g_2(y)\\
+u(x,0) = f_1(x) && u(x,H) = f_2(x)
+\end{align*}
+
+and the rectangle given by
+\begin{align*}
+0\leq x \leq L,\\
+0 \leq y \leq H
+\end{align*}
+
+
+Thus, we have
+
+$$u(x,y) = u_1(x,y) + u_2(x,y) + u_3(x,y) + u_4(x,y)$$
+
+Given our initial equation we thus have
+
+\begin{align*}
+&u_1(1,y) + u_2(1,y) + u_3(1,y) + u_4(1,y) \\
+&u_1(1,y) + u_2(1,0) + u_3(1,y) + u_4(1,H)
+\end{align*}
+Due to the domain restriction on $u(1,y)$ we thus have
+
+$$110 + 0 + \frac{\pi}{2} - \frac{\pi}{2}$$
+
+Thus
+
+$$u(1,y) = 110$$.
+
+\section*{Exercise 5.4}
+The motion equation for a drum is given by
+$$
+w_{xx}+w_{yy}=\frac{1}{c^2}w_{tt}
+$$
+
+thus we have the general solution
+
+$$
+U_{mn}(x,y,t) = \left(B_{mn}cos(\lambda_{mn}t)+B^{*}_{mn}sin\left(\lambda_{mn}t)\right)\right)sin\left(\frac{m \pi x}{a}\right)sin\left(\frac{n \pi y}{b}\right)
+$$
+
+where
+
+$$
+\lambda_{mn} = c\pi \sqrt{\mu_a^2 + \mu_b^2}\Bigr| m,n \geq 1
+$$
+
+$$
+u_{mn} = \frac{\lambda_{mn}}{2\pi }
+$$
+
+thus
+$$
+f = \frac{c}{2} \sqrt{\mu_a^2 + \mu_b^2}
+$$
+
+By defition, we have 
+\begin{align*}
+c^2 &= \frac{T}{p}\\
+c &= \sqrt{\frac{T}{p}}
+\end{align*}
+
+By doubling the tension variable $T$ we have
+
+\begin{align*}
+f_2 = \frac{c}{2} \sqrt{\mu_a^2 + \mu_b^2} \\
+f_2 = \frac{1}{2} \sqrt{\frac{2T}{p}}\sqrt{\mu_a^2 + \mu_b^2} \\
+f_2 = \frac{1}{2} \sqrt{2} \sqrt{\frac{T}{p}}\sqrt{\mu_a^2 + \mu_b^2} \\
+f_2 = \sqrt{2} f_1
+\end{align*}
+
+Thus, the frequency is multiplied by $\sqrt{2}$ when the tension of the membrane is doubled.
+
+\section*{Exercise 5.5}
+
+No. The Bessel function $J_0(x)$ in the equation with frequency $\frac{\lambda_{mn}}{2\pi}$ will not be able to have two different nodal lines corresponding to the same frequency.
+The equation indicates that different nodal lines will have different radiuses for different eigenfunctions, as $\frac{\lambda_{mn}}{2\pi}$ will be different for different eigenfunctions, and because $J_0(x)$ is not reguarly spaced on the axis (thus meaning the 'function' cannot be expressed as the sum of two squares). (I'd love to show the cool photo on P589 in Kreyzig to show how it's not possible but I don't want to include the pic verbatim in here.)
+
+
+
+\end{document}
