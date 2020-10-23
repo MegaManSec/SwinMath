@@ -1,0 +1,152 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{graphicx}
+\usepackage[]{hyperref}
+\usepackage[]{xcolor}
+\usepackage[]{cancel}
+\usepackage[]{fancyhdr}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\title{\vspace{-4cm}MTH20012 - Series and Transformations Test 3}
+\author{Joshua Rogers}
+\lhead{MTH20012 Test 3}
+\rhead{Joshua Rogers 101096819}
+\date\today
+
+\begin{document}
+\maketitle 
+
+\section*{Part A}
+\subsection*{Question 1}
+Find the Laplace transform of the following function:
+$$f(t) = e^{3t}sin(4t)-te^{-3t}sin(t)$$
+\subsubsection*{Answer}
+
+Using linearity,
+$$ \mathcal{L}\{f(t)\} = \mathcal{L}\{e^{3t} sin(4t)\} - \mathcal{L}\{e^{-3t} sin(t)\}$$
+
+For the first part we use the standard Laplace transform of $sin(at)$ where $a=4$. Likewise, using the first shift theorem with $a=3$ we obtain
+
+$$\frac{4}{(s-3)^2+16}$$
+
+For the second part we do the same thing, but noting that we also use the multiplcation theorm that $tF(t) = -f^{'}(s)$
+
+$$-f^{'}(s) = \frac{2(s+3)}{\left((s+3)^2+1\right)^2}$$
+i.e.
+$$- \mathcal{L}\{e^{-3t} sin(t)\} = - \frac{2(s+3)}{\left((s+3)^2+1\right)^2}$$
+
+Thus, we have have the laplace tansformation
+
+$$\mathcal{L}\{f(t)\} = \frac{4}{(s-3)^2+16} - \frac{2(s+3)}{\left((s+3)^2+1\right)^2}$$
+
+\subsection*{Question 2}
+Find the laplace transform of the following function
+
+\[ f(t) = \begin{cases}
+     3t & 0\leq t < 2 \\
+     0 & 2\leq t < 4 \\
+     -3t^2 & 4 \leq t < 5 \\
+     1 & 5 \leq t
+   \end{cases}
+\]
+
+\subsubsection*{Answer}
+
+Effectively, we want to solve the following integral
+
+$$\int_{0}^{2} 3t e^{-st} dt  + \int_{4}^{5} -3t^2 e^{-st} dt + \int_{5}^{\infty} e^{-st} dt$$
+
+Yes, we could instead do it 'the right way' solving for the step functions, but I really prefer integration by parts and it's quite easier and quicker (at least for me!)
+
+Evaluating this step by step, we start with the final part of the equation.
+
+\begin{equation}\label{last}
+\int_{5}^{\infty} e^{-st} dt = \lim_{t \to \infty} -\frac{e^{-st}}{s} + \lim_{t \to 5} \frac{e^{-st}}{s} = \frac{e^{-5s}}{s}
+\end{equation}
+
+For the first part, we solve the indefinite integral first (more on this later.)
+
+$$3\int t e^{-st} dt$$
+
+Using integration by parts, we let $f=t$, $df=dt$, $dg=e^{-st}dt$, and $g=-\frac{e^{-st}}{s}$.
+
+\begin{equation}\label{firstbase}
+ = -\frac{3te^{-st}}{s}-\frac{3}{s^2}\int e^u du = -\frac{3e^{-st}(st+1)}{s^2}
+\end{equation}
+
+Between $t=0$ and $t=2$ this is simply
+
+\begin{equation}\label{first}
+\frac{3(1-e^{-2s}(2s+1))}{s^2}
+\end{equation}
+
+
+Finally, we must solve the middle part, using integration by parts twice.
+We first attempt to solve the indefinite integral
+$$\int t^2 e^{-st} dt$$
+remembering that we must multiply the result by $-3$ later on.
+
+We let $f=t^2$, $df=2tdt$, $dg=e^{-st}dt$, and $g=-\frac{e^{-st}}{s}$
+
+thus we have
+
+$$=-\frac{t^2e^{-st}}{s}+\frac{2}{s} \int t e^{-st} dt$$
+
+And we have already solved this remaining integral already (not-withstanding the $3$ out of the front) in $\eqref{firstbase}$.
+
+thus we have
+
+$$-3 \int t^2 e^{-st} dt = -\frac{t^2e^{-st}}{s}+\frac{2}{s} \cdot \frac{-e^{-st}(st+1)}{s^2} = 3\frac{e^{-st}\left(s^2t^2+2st+2\right)}{s^3}$$
+
+Between $t=4$ and $t=5$ this is
+
+\begin{equation}\label{middle}
+3\frac{e^{-5s}\left(25s^2+10s+2\right)}{s^3} - 3\frac{2e^{-4s}\left(8s^2+4s+1\right)}{s^3}
+\end{equation}
+
+Thus, finally, we add up $\eqref{first}$, $\eqref{middle}$, and $\eqref{last}$ and obtain
+
+$$
+F(s) = \frac{3(1-e^{-2s}(2s+1))}{s^2} + \frac{3e^{-5s}\left(25s^2+10s+2\right) - 6e^{-4s}\left(8s^2+4s+1\right)}{s^3} + \frac{e^{-5s}}{s}
+$$
+
+Which, although may be ugly, is indeed the correct answer!
+\subsection*{Question 3}
+
+Find the inverse Laplace transform of the following function:
+
+$$F(s) = \frac{e^{-3s}\left(2s+1\right)}{s^2-4s+13}$$
+
+\subsubsection*{Answer}
+Using the inverse transform rule $\mathcal{L}^{-1}\left\{e^{-as}F\left(s\right)\right\}=H\left(t-a\right)f\left(t-a\right)$
+
+we have $a=3$ and (then using partial fractions)
+$$F(s) = \frac{2s+1}{s^2-4s+13} = 2 \frac{(s-2)}{\left(s-2\right)^2+9}+5\frac{1}{\left(s-2\right)^2+9}$$
+
+The first part of this is clearly the cosine function with frequency $3$, shifted by $a=2$, and all multiplied by $2$.
+
+The second part is similar but the sin function divided by $3$ and then multiplied by $5$
+
+thus, we have
+
+$$f(t) = 2\mathcal{L}^{-1}\left\{\frac{s-2}{\left(s-2\right)^2+9}\right\}+5\mathcal{L}^{-1}\left\{\frac{1}{\left(s-2\right)^2+9}\right\} = 2e^{2t}\cos \left(3t\right)+\frac{5}{3}e^{2t}\sin \left(3t\right)$$
+
+Thus by our defition of the inverse transform rule, we have $f(t) = H(t-3)f(t-3)$:
+
+$$f(t) = \text{H}\left(t-3\right)\left[2e^{2\left(t-3\right)}\cos \left(3\left(t-3\right)\right)+\frac{5}{3}e^{2\left(t-3\right)}\sin \left(3\left(t-3\right)\right)\right]$$
+
+or to have it a bit nicer..
+
+$$f(t) = \frac{1}{3} H(t-3) e^{2t-6} \left[6cos\left(3t-9\right)+5sin\left(3t-9\right)\right]$$
+\end{document}
