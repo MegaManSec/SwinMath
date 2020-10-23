@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{graphicx}
+\usepackage[]{hyperref}
+\usepackage[]{xcolor}
+\usepackage[]{cancel}
+\usepackage[]{fancyhdr}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\title{\vspace{-4cm}MTH20012 - Series and Transformations Test 3}
+\author{Joshua Rogers}
+\lhead{MTH20012 Test 3}
+\rhead{Joshua Rogers 101096819}
+\date\today
+
+\begin{document}
+\maketitle 
+
+\section*{Part C, Question 5}
+\subsection*{Part A}
+Use Laplace transforms to obtain the soutions of the following system of differential equations:
+
+$$
+\frac{dx}{dt} = x^{'} = -6x+y
+$$
+$$
+\frac{dy}{dt} = y^{'} = 4x-3y
+$$
+
+given $x(0) = -3$ and $y(0) =-4$.
+\subsubsection*{Answer}
+
+\[ \begin{cases}
+sX(s)-x(0)=-6X(s)+Y(s) \\
+sY(s)-y(0) = 4X(s)-3Y(s)
+   \end{cases}
+\]
+
+\[ \begin{cases}
+sX(s)+3=-6X(s)+Y(s) \\
+sY(s)+4 = 4X(s)-3Y(s)
+   \end{cases}
+\]
+
+Letting $X(s)=x$ and $Y(s)=y$ for the moment we obtain the simultaneous equations
+\[ \begin{cases}
+sx+3=-6x+y \\
+sy+4 = 4x-3y
+   \end{cases}
+\]
+
+substituting $y=sx+6x+3$ into $sy+4=4x-3y$ we obtain
+
+$$s(sx+6x+3)+4=4x-3(sx+6x+3)$$
+$$s^2x+6sx+3s+4=-3sx-14x-9$$
+$$x\left[s^2+9s+14\right]=-3s-13$$
+
+Thus, we have
+
+$$X(s) = -\frac{3s+13}{s^2+9s+14} = -\frac{1}{5} \left[ \frac{8}{s+7}+\frac{7}{s+2}\right]$$
+Using the reverse shift theorem we thus have
+
+$$\mathcal{L}^{-1}\left\{\frac{1}{s+2}\right\} = e^{-2t}$$
+and
+$$\mathcal{L}^{-1}\left\{\frac{1}{s+7}\right\} = e^{-7t}$$
+
+thus we have
+
+$$x(t) = -\frac{1}{5} \left[ 7e^{-2t}+8e^{-7t}\right]$$
+
+Likewise, we have
+
+$$sX(s)+3+6X(s)=Y(s)$$
+or
+$$sx+3+6x=y$$
+
+$$y=3-\frac{s\left(3s+13\right)}{s^2+9s+14} -\frac{6\left(3s+13\right)}{s^2+9s+14} = - \frac{4\left(s+9\right)}{(s+7)(s+2)} = \frac{8}{5(s+7)}-\frac{28}{5(s+2)}$$
+
+Once again using the reverse shift theorem exactly as before, we obtain
+
+$$y(t) = -\frac{4}{5} \left[ 7e^{-2t}-2e^{-7t} \right]$$
+
+
+Thus we have obtained
+
+\[ \begin{cases}
+x(t) = -\frac{1}{5} \left[ 7e^{-2t}+8e^{-7t}\right] \\
+y(t) = -\frac{4}{5} \left[ 7e^{-2t}-2e^{-7t} \right]
+\end{cases}
+\]
+\subsection*{Part B}
+Verify the solution satisfies the differential equations.
+\subsubsection*{Answer}
+
+$$x(0) = -\frac{1}{5} \left[ 7+8 \right] = -3$$
+$$y(0) = -\frac{4}{5} \left [ 7-2 \right] = -4$$
+
+Likewise, we have
+\[ \begin{cases}
+x^{'}(t) = \frac{14}{5} \left[ e^{-2t}+4e^{-7t} \right] \\
+y^{'}(t) = \frac{14}{5} \left[ e^{-2t}+4e^{-7t} \right]
+\end{cases}
+\]
+
+Putting this into the original system of differential equations, obtain
+
+$$  \frac{14}{5} \left[ e^{-2t}+4e^{-7t} \right] = -6 \left[ -\frac{1}{5} \left[ 7e^{-2t}+8e^{-7t}\right] \right ] +  -\frac{4}{5} \left[ 7e^{-2t}-2e^{-7t} \right]$$
+
+$$ 56e^{-7t}+14e^{-2t}=48e^{-7t}+42e^{-2t}-28e^{-2t}+8e^{-7t} $$
+
+$$56e^{-7t}+14e^{-2t}=48e^{-7t}+42e^{-2t}-28e^{-2t}+8e^{-7t}$$
+
+RHS = LHS, thus this is true and the solutions are valid.
+
+\end{document}
