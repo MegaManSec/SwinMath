@@ -65,18 +65,18 @@ Find the laplace transform of the following function
 
 Effectively, we want to solve the following integral
 
-$$\int_{0}^{2} 3t e^{-st} dt  + \int_{4}^{5} -3t^2 e^{-st} dt + \int_{5}^{\infty} e^{-st} dt$$
+$$F(s) = \int_{0}^{2} 3t e^{-st} dt  + \int_{4}^{5} -3t^2 e^{-st} dt + \int_{5}^{\infty} e^{-st} dt$$
 
 I'm going to answer this question twice, just because I didn't want to bother with the Heaviside function and I prefer integrals, but I realize it may be required to show that I know how it works for full marks. However, having written out all of the integration, I couldn't have the heart to delete it.
 
 
-Evaluating this step by step, we start with the final part of the equation.
+Evaluating this step by step, we start with the final part of the equation as it is the easiest.
 
 \begin{equation}\label{last}
-\int_{5}^{\infty} e^{-st} dt = \lim_{t \to \infty} \frac{e^{-st}}{s} - \lim_{t \to 5} \frac{e^{-st}}{s} = - \frac{e^{-5s}}{s}
+\int_{5}^{\infty} e^{-st} dt = - \lim_{t \to \infty} \frac{e^{-st}}{s} - - \lim_{t \to 5} \frac{e^{-st}}{s} = \frac{e^{-5s}}{s}
 \end{equation}
 
-For the first part, we solve the indefinite integral first (more on this later.)
+For the first part of the equation , we solve the indefinite integral first (more on this later.)
 
 $$3\int t e^{-st} dt$$
 
@@ -119,10 +119,11 @@ Between $t=4$ and $t=5$ this is
 Thus, finally, we add up $\eqref{first}$, $\eqref{middle}$, and $\eqref{last}$ and obtain
 
 $$
-F(s) = \frac{3(1-e^{-2s}(2s+1))}{s^2} + \frac{3e^{-5s}\left(25s^2+10s+2\right) - 3e^{-4s}\left(16s^2+8s+2\right)}{s^3} - \frac{e^{-5s}}{s}
+F(s) = \frac{3(1-e^{-2s}(2s+1))}{s^2} + \frac{3e^{-5s}\left(25s^2+10s+2\right) - 3e^{-4s}\left(16s^2+8s+2\right)}{s^3} + \frac{e^{-5s}}{s}
 $$
+i.e
+$$F(s) = \frac{3}{s^2} -\frac{3e^{-2s}}{s^2} - \frac{6e^{-2s}}{s} -\frac{6e^{-4s}}{s^3}-\frac{24e^{-4s}}{s^2}-\frac{48e^{-4s}}{s} + \frac{6e^{-5s}}{s^3}+\frac{30e^{-5s}}{s^2}+\frac{76e^{-5s}}{s}$$
 
-Which, although may be ugly, is indeed the correct answer!
 
 Alternatively, we do it a different way, using the heaviside step function.
 
@@ -155,7 +156,7 @@ Thus we have found
 
 $$F(s) = \frac{3}{s^2} -\frac{3e^{-2s}}{s^2} - \frac{6e^{-2s}}{s} -\frac{6e^{-4s}}{s^3}-\frac{24e^{-4s}}{s^2}-\frac{48e^{-4s}}{s} + \frac{6e^{-5s}}{s^3}+\frac{30e^{-5s}}{s^2}+\frac{76e^{-5s}}{s}$$
 
-which, is another representation of the function we found earlier. I still prefer integration.
+Which is the exact same as found previously, as expected.
 
 
 \subsection*{Question 3}
