@@ -34,7 +34,7 @@ $$f(t) = e^{3t}sin(4t)-te^{-3t}sin(t)$$
 \subsubsection*{Answer}
 
 Using linearity,
-$$ \mathcal{L}\{f(t)\} = \mathcal{L}\{e^{3t} sin(4t)\} - \mathcal{L}\{e^{-3t} sin(t)\}$$
+$$ \mathcal{L}\{f(t)\} = \mathcal{L}\{e^{3t} sin(4t)\} - \mathcal{L}\{t e^{-3t} sin(t)\}$$
 
 For the first part we use the standard Laplace transform of $sin(at)$ where $a=4$. Likewise, using the first shift theorem with $a=3$ we obtain
 
@@ -67,12 +67,13 @@ Effectively, we want to solve the following integral
 
 $$\int_{0}^{2} 3t e^{-st} dt  + \int_{4}^{5} -3t^2 e^{-st} dt + \int_{5}^{\infty} e^{-st} dt$$
 
-Yes, we could instead do it 'the right way' solving for the step functions, but I really prefer integration by parts and it's quite easier and quicker (at least for me!)
+I'm going to answer this question twice, just because I didn't want to bother with the Heaviside function and I prefer integrals, but I realize it may be required to show that I know how it works for full marks. However, having written out all of the integration, I couldn't have the heart to delete it.
+
 
 Evaluating this step by step, we start with the final part of the equation.
 
 \begin{equation}\label{last}
-\int_{5}^{\infty} e^{-st} dt = \lim_{t \to \infty} -\frac{e^{-st}}{s} + \lim_{t \to 5} \frac{e^{-st}}{s} = \frac{e^{-5s}}{s}
+\int_{5}^{\infty} e^{-st} dt = \lim_{t \to \infty} \frac{e^{-st}}{s} - \lim_{t \to 5} \frac{e^{-st}}{s} = - \frac{e^{-5s}}{s}
 \end{equation}
 
 For the first part, we solve the indefinite integral first (more on this later.)
@@ -112,16 +113,51 @@ $$-3 \int t^2 e^{-st} dt = -\frac{t^2e^{-st}}{s}+\frac{2}{s} \cdot \frac{-e^{-st
 Between $t=4$ and $t=5$ this is
 
 \begin{equation}\label{middle}
-3\frac{e^{-5s}\left(25s^2+10s+2\right)}{s^3} - 3\frac{2e^{-4s}\left(8s^2+4s+1\right)}{s^3}
+3\frac{e^{-5s}\left(25s^2+10s+2\right)}{s^3} - 3\frac{e^{-4s}\left(16s^2+8s+2\right)}{s^3}
 \end{equation}
 
 Thus, finally, we add up $\eqref{first}$, $\eqref{middle}$, and $\eqref{last}$ and obtain
 
 $$
-F(s) = \frac{3(1-e^{-2s}(2s+1))}{s^2} + \frac{3e^{-5s}\left(25s^2+10s+2\right) - 6e^{-4s}\left(8s^2+4s+1\right)}{s^3} + \frac{e^{-5s}}{s}
+F(s) = \frac{3(1-e^{-2s}(2s+1))}{s^2} + \frac{3e^{-5s}\left(25s^2+10s+2\right) - 3e^{-4s}\left(16s^2+8s+2\right)}{s^3} - \frac{e^{-5s}}{s}
 $$
 
 Which, although may be ugly, is indeed the correct answer!
+
+Alternatively, we do it a different way, using the heaviside step function.
+
+
+$$f(t) = 3t \left[ H(t-0)-H(t-2)\right ] -3t^2 \left[ H(t-4) - H(t-5) \right] + 1 \left[ H(t-5) \right]$$
+$$f(t) = 3tH(t) - 3tH(t-2) - 3t^2(H(t-4)) + 3t^2(H(t-5)) + H(t-5)$$
+
+Noting that we have
+$$ \mathcal{L} \left\{ H(t-c) f(t-c) \right\} = e^{-cs} F(s)$$
+and
+$$ \mathcal{L} \left\{H(t-c)\right\} = \frac{e^{-cs}}{s}$$
+
+We split up the $f(t)$ into smaller $g(t)$s and proceed accordingly.
+
+$$F(s) = \sum \mathcal{L}\{g(t)\}$$
+
+\begin{align*}
+&g(t) = 3tH(t) = 3t = \frac{3}{s^2} \\
+&g(t) = -3tH(t-2) = (-3 (t-2)-6)H(t-2) =-3(t-2)H(t-2)-6H(t-2) \\
+&= -\frac{3e^{-2s}}{s^2} - \frac{6e^{-2s}}{s} \\
+& g(t) = -3t^2(H(t-4)) = -3((t-4)^2+8(t-4)+16)H(t-4) \\
+& -3(t-4)^2H(t-4)-24(t-4)H(t-4)-48H(t-4) \\
+&= -\frac{6e^{-4s}}{s^3}-\frac{24e^{-4s}}{s^2}-\frac{48e^{-4s}}{s} \\
+&g(t) = 3t^2(H(t-5) =  3((t-5)^2+10(t-5)+25)H(t-5) \\
+&= \frac{6e^{-5s}}{s^3}+\frac{30e^{-5s}}{s^2}+\frac{75e^{-5s}}{s} \\
+&g(t) = H(t-5) = \frac{e^{-5s}}{s}
+\end{align*}
+
+Thus we have found
+
+$$F(s) = \frac{3}{s^2} -\frac{3e^{-2s}}{s^2} - \frac{6e^{-2s}}{s} -\frac{6e^{-4s}}{s^3}-\frac{24e^{-4s}}{s^2}-\frac{48e^{-4s}}{s} + \frac{6e^{-5s}}{s^3}+\frac{30e^{-5s}}{s^2}+\frac{76e^{-5s}}{s}$$
+
+which, is another representation of the function we found earlier. I still prefer integration.
+
+
 \subsection*{Question 3}
 
 Find the inverse Laplace transform of the following function:
