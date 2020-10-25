@@ -1,3 +1,4 @@
+
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -112,6 +113,8 @@ $a_0 = 50$, $a_1 = 75$,$a_2 = 0$,$a_3 = -175/4$,$a_4 = 0$,$a_5 = 275/8$.
 thus
 
 $$u(r,\phi) \approx 50 + 75 r P_1(cos(\phi)) - \frac{175}{4} r^3 P_3(cos(\phi)) + \frac{275}{8} r^5 P_5(cos(\phi)) + ...$$
+
+Surprisingly, this can be plotted on wolframalpha, and the boundary conditions at $r=1$ can be seen: $\href{https://www.wolframalpha.com/input/?i=graph+sum_{n%3D0}^{50}+50+r^n+LegendreP(n%2C+cos(x))+(LegendreP(-1+%2B+n%2C+0)+-+LegendreP(1+%2B+n%2C+0))+where+r%3D1+from+x%3D0+to+pi}{link}$ which is pretty cool.
 
 \section*{Final comment}
 Given this is the last document to be submitted, I thought I'd add a note. This unit has been quite difficult not due to the content itself, but the strange structuring, and lack of support in the study guide. The questions for these assignments aren't clear as to how much work needs to be done. In all previous assignments, I've derived formulas, whereas for this assignment I just simply plugged values into formulas in the required textbook. Having more of an understanding what I am actually required to do in this unit would be nice; so please note for future students.
