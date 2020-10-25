@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{hyperref}
+\usepackage[]{cancel}
+\usepackage[]{graphicx}
+\usepackage[]{xcolor}
+\usepackage[]{tabularx}
+\usepackage[]{fancyhdr}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\title{\vspace{-4cm}MTH30002 - Differential Equations Assignment 12}
+\author{Joshua Rogers}
+\lhead{MTH30002 Assignment 12}
+\rhead{Joshua Rogers 101096819}
+\date\today
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 5.6}
+
+This is fairly easy given the 'answer' is already given.
+
+\begin{equation}\label{laplace}
+\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} +\frac{\partial^2 u}{\partial z^2} = 0
+\end{equation}
+
+$$u = \frac{c}{\sqrt{x^2+y^2+z^2}} + k$$
+$$\frac{\partial u}{\partial x} = -\frac{cx}{\left(x^2+y^2+z^2\right)^{3/2}}$$
+$$\frac{\partial^2 u}{\partial x^2} = \frac{c\left(2x^2-y^2-z^2\right)}{\left(x^2+y^2+z^2\right)^{5/2}}$$
+
+Using the same process we obtain
+$$\frac{\partial^2 u}{\partial y^2} = \frac{c\left(2y^2-x^2-z^2\right)}{\left(x^2+y^2+z^2\right)^{5/2}}$$
+$$\frac{\partial^2 u}{\partial z^2} = \frac{c\left(2z^2-x^2-y^2\right)}{\left(x^2+y^2+z^2\right)^{5/2}}$$
+
+Substituting these equations into $\eqref{laplace}$, we obtain
+
+$$ \frac{c\left(2x^2-y^2-z^2\right)}{\left(x^2+y^2+z^2\right)^{5/2}} + \frac{c\left(2y^2-x^2-z^2\right)}{\left(x^2+y^2+z^2\right)^{5/2}} + \frac{c\left(2z^2-x^2-y^2\right)}{\left(x^2+y^2+z^2\right)^{5/2}} = 0$$
+
+$$(2x^2-y^2-z^2) + (2y^2-x^2-z^2) + (2z^2-x^2-y^2) = 0 \frac{\left(x^2+y^2+z^2\right)^{5/2}}{c} = 0$$
+
+$$(2x^2-x^2-x^2) + (2y^2-y^2-y^2) + (2z^2-z^2-z^2) = 0$$
+
+$$0=0$$
+
+LHS=RHS, thus we have shown $u=c/r+k$ is a solution to the laplace equation specified.
+
+\section*{Exercise 5.7}
+
+Given $w=cos(\phi)$, and $R=1$, we manipulate the boundary condition to obtain
+
+$$cos(3x) = cos(x)(2cos(2x-1)) = cos(x)(2(2cos^2(x)-1)-1) = w(2(2w^2-1)-1) = 4w^3 -3w$$
+
+We note that
+
+$$4w^3-3w = \frac{8}{5} P_3 - \frac{3}{5} w = \frac{8}{5} \left[ \frac{1}{2} \left(5w^3-3w\right)\right]-\frac{3w}{5}$$
+
+Therefore, we have
+
+$$u(r,\phi) = \frac{8}{5} r^3 P_3(w) - \frac{3w}{5} = \frac{8}{5} r^3 P_3(cos(\phi)) - \frac{3cos(\phi)}{5} = \frac{8}{5}r^3 \left[ \frac{1}{2} \left( 5cos^3(\phi)-3cos(\phi)\right)\right] - \frac{3cos(\phi)}{5}$$
+
+Simplifying this, we obtain
+
+$$u(r,\phi) = r^3cos(3\phi) + \frac{3}{5} (r^3-1) cos(\phi)$$
+This clearly satisfies the boundary condition, as when $r=1$, we have $u(1,\phi) = cos(3\phi)$ as expected. 
+
+
+\section*{Exercise 5.8}
+
+\[ f(\phi) = \begin{cases}
+      100 & 0\leq \phi < \frac{\pi}{2} \\
+      0 & \frac{\pi}{2} \leq \phi < \pi
+   \end{cases}
+\]
+
+and
+
+
+$$u(r,\phi) = \sum_{n=0}^{\infty} r^n A_n P_n cos(\phi)$$
+
+Given the boundary conditions and $R=1$, we have
+
+$$u(1,\phi) = \sum_{n=0}^{\infty} A_n P_n(cos(\phi)) = f(\phi) = 100$$
+
+Calculating the Legendre's polynomial coefficients we have,
+
+$$A_nR^n = \frac{2n+1}{2} \int_0^{1} f(\phi) P_n(\phi) d\phi$$
+
+$$A_n = 100 \frac{2n+1}{2} \int_0^{1} P_n(\phi) d\phi$$
+
+Thus we have the answer
+
+$$u(r,\phi) = \sum_{n=0}^{\infty} A_n r^n P_n(cos(\phi))$$
+where
+$$A_n = 100 \frac{2n+1}{2} \int_0^{1} P_n(\phi) d\phi$$
+
+For the first couple of values of $n$, we have
+
+$a_0 = 50$, $a_1 = 75$,$a_2 = 0$,$a_3 = -175/4$,$a_4 = 0$,$a_5 = 275/8$.
+    
+thus
+
+$$u(r,\phi) \approx 50 + 75 r P_1(cos(\phi)) - \frac{175}{4} r^3 P_3(cos(\phi)) + \frac{275}{8} r^5 P_5(cos(\phi)) + ...$$
+
+\section*{Final comment}
+Given this is the last document to be submitted, I thought I'd add a note. This unit has been quite difficult not due to the content itself, but the strange structuring, and lack of support in the study guide. The questions for these assignments aren't clear as to how much work needs to be done. In all previous assignments, I've derived formulas, whereas for this assignment I just simply plugged values into formulas in the required textbook. Having more of an understanding what I am actually required to do in this unit would be nice; so please note for future students.
+\end{document}
