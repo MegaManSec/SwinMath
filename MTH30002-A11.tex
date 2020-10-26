@@ -30,58 +30,75 @@
 
 \section*{Exercise 5.3}
 
-$$\delta^2u = \frac{d^2u}{dx^2} + \frac{d^2u}{dy^2} = 0$$
-$$u(x,y) = \sum_{n=1}^{\infty} u_n(x,y)$$
+We have the boundary condition
 
+$$u(1,\theta) = f(\theta)$$
 
-Thus, given the four boundary conditions and the fact that $r<1$...
+We actually have
 
-\begin{align*}
-u(0,y) = g_1(y) && u(L,y) = g_2(y)\\
-u(x,0) = f_1(x) && u(x,H) = f_2(x)
-\end{align*}
+$$
+u(1,\theta) = \begin{cases}
+0 & -\pi < \theta \leq -\frac{\pi}{2} \\
+110 & -\frac{\pi}{2} < \theta < \frac{\pi}{2} \\
+0 & \frac{\pi}{2} \leq \theta < \pi \\
+   \end{cases}
+$$
 
-and the disc given by
-\begin{align*}
-0\leq x \leq L,\\
-0 \leq y \leq H
-\end{align*}
+$$u(r,\theta) = F(r)G(\theta)$$
 
-and clearly $L=H$ given this is a disk.
-
-
-Given the sum as specified before, we have 
-
-$$u(x,y) = u_1(x,y) + u_2(x,y) + u_3(x,y) + u_4(x,y)$$
-
-Given our initial equation we thus have
+placing this into the circular Laplace's equation and setting the solution to $K$ we get
 
 \begin{align*}
-&u_1(1,y) + u_2(1,y) + u_3(1,y) + u_4(1,y) \\
-&u_1(1,y) + u_2(1,0) + u_3(1,y) + u_4(1,L)
+r^2 F^{''} + rF^{'}-KF=0 \\
+KG+G^{''}=0
 \end{align*}
-Due to the domain restriction on $u(1,y)$ we thus have
-
-$$110 + 0 + \frac{\pi}{2} - \frac{\pi}{2}$$
-
-Thus
-
-$$u(1,y) = 110$$.
 
 
-Alternatively, we could have just solved
-$$u(r,y) = a_0 + \sum_{n=1}^{\infty} r^m A_m cos\left(ym\right)$$
-and solved for $A_m$, let $r=1$, we would then obtain
+For $K \geq 0$, we let $K=k^2$
 
-$$u(1,y) = 55 - \frac{220}{\pi} \sum_{n=1}^{\infty} ..$$
+$$G(\theta) = Acos(k\theta) + Bsin(k\theta)$$
 
-where the sum converges to $\frac{-\pi}{4}$
+We have the boundary conditions
 
-thus
+$$G\left(\frac{\pi}{2}\right) = G\left(\frac{3\pi}{2}\right) = 0$$
 
-$$u(1,y) = 55 - \frac{220}{\pi} \cdot \frac{-\pi}{4} = 110$$
+$$\det \left( \begin{bmatrix} cos\left(k\frac{\pi}{2}\right) & sin\left(k\frac{\pi}{2}\right) \\ cos\left(k\frac{-\pi}{2}\right) & sin\left(k\frac{-\pi}{2}\right) \end{bmatrix} \right) = 0 $$
 
-as expected.
+This is clearly true for all integer values of $k$.
+
+Thus, we have the eigenfunction
+
+$$G_k(\theta) = A_k cos(k\theta) + B_k sin(k\theta)$$
+
+
+
+Similarly, we have for $K \geq 0$, we let $K=k^2$
+$$F(r) = A + B \ln r$$
+and
+$$F(r) = \tilde{A} r^k + \tilde{B} r^{-k}$$
+To satisfy the condition that $|F(r)| < \infty$ we must have $B = \tilde{B} = 0$
+
+Thus, we have
+
+$$F(r) = A k^p\Bigr| p \geq 0$$
+Thus, for inside the disk, we have
+
+$$u(r,\theta) = \sum r^n G_n(\theta) = \sum_{n=0}^{\infty} A_n r^n cos(n \theta) + \sum_{n=1}^{\infty} B_n r^n sin (n\theta)$$
+
+Applying our boundary conditions and given the fact this is clearly a fourier series, we have
+
+$$A_0 = \frac{1}{2\pi} \int_{-\pi/2}^{\pi/2} 110 d\theta = 55$$
+
+$$A_n= \frac{1}{\pi} \int_{-\pi/2}^{\pi/2} 110 cos(n\theta) d\theta$$
+$$A_n = \frac{220}{n \pi} sin\left(\frac{n\pi}{2}\right)$$
+
+Likewise we have $B_n = 0$
+
+Thus, as $A_n=0$ for $n=2n-1$, we have
+
+$$u(r,\theta) = 55 -220 \sum_{n=1}^{\infty} r^{2n-1} \left(\frac{(-1)^n}{(2n-1)\pi}\right) cos((2n-1)\theta)$$
+
+
 
 \section*{Exercise 5.4}
 The motion equation for a drum is given by
