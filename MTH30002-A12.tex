@@ -59,9 +59,9 @@ LHS=RHS, thus we have shown $u=c/r+k$ is a solution to the laplace equation spec
 
 \section*{Exercise 5.7}
 
-Given $w=cos(\phi)$, and $R=1$, we manipulate the boundary condition to obtain
+Given $w=\cos(\phi)$, and $R=1$, we manipulate the boundary condition to obtain
 
-$$cos(3x) = cos(x)(2cos(2x-1)) = cos(x)(2(2cos^2(x)-1)-1) = w(2(2w^2-1)-1) = 4w^3 -3w$$
+$$\cos(3x) = \cos(x)(2\cos(2x-1)) = \cos(x)(2(2\cos^2(x)-1)-1) = w(2(2w^2-1)-1) = 4w^3 -3w$$
 
 We note that
 
@@ -69,12 +69,12 @@ $$4w^3-3w = \frac{8}{5} P_3 - \frac{3}{5} w = \frac{8}{5} \left[ \frac{1}{2} \le
 
 Therefore, we have
 
-$$u(r,\phi) = \frac{8}{5} r^3 P_3(w) - \frac{3w}{5} = \frac{8}{5} r^3 P_3(cos(\phi)) - \frac{3cos(\phi)}{5} = \frac{8}{5}r^3 \left[ \frac{1}{2} \left( 5cos^3(\phi)-3cos(\phi)\right)\right] - \frac{3cos(\phi)}{5}$$
+$$u(r,\phi) = \frac{8}{5} r^3 P_3(w) - \frac{3w}{5} = \frac{8}{5} r^3 P_3(\cos(\phi)) - \frac{3\cos(\phi)}{5} = \frac{8}{5}r^3 \left[ \frac{1}{2} \left( 5\cos^3(\phi)-3\cos(\phi)\right)\right] - \frac{3\cos(\phi)}{5}$$
 
 Simplifying this, we obtain
 
-$$u(r,\phi) = r^3cos(3\phi) + \frac{3}{5} (r^3-1) cos(\phi)$$
-This clearly satisfies the boundary condition, as when $r=1$, we have $u(1,\phi) = cos(3\phi)$ as expected. 
+$$u(r,\phi) = r^3\cos(3\phi) + \frac{3}{5} (r^3-1) \cos(\phi)$$
+This clearly satisfies the boundary condition, as when $r=1$, we have $u(1,\phi) = \cos(3\phi)$ as expected. 
 
 
 \section*{Exercise 5.8}
@@ -88,11 +88,11 @@ This clearly satisfies the boundary condition, as when $r=1$, we have $u(1,\phi)
 and
 
 
-$$u(r,\phi) = \sum_{n=0}^{\infty} r^n A_n P_n cos(\phi)$$
+$$u(r,\phi) = \sum_{n=0}^{\infty} r^n A_n P_n \cos(\phi)$$
 
 Given the boundary conditions and $R=1$, we have
 
-$$u(1,\phi) = \sum_{n=0}^{\infty} A_n P_n(cos(\phi)) = f(\phi) = 100$$
+$$u(1,\phi) = \sum_{n=0}^{\infty} A_n P_n(\cos(\phi)) = f(\phi) = 100$$
 
 Calculating the Legendre's polynomial coefficients we have,
 
@@ -102,7 +102,7 @@ $$A_n = 100 \frac{2n+1}{2} \int_0^{1} P_n(\phi) d\phi$$
 
 Thus we have the answer
 
-$$u(r,\phi) = \sum_{n=0}^{\infty} A_n r^n P_n(cos(\phi))$$
+$$u(r,\phi) = \sum_{n=0}^{\infty} A_n r^n P_n(\cos(\phi))$$
 where
 $$A_n = 100 \frac{2n+1}{2} \int_0^{1} P_n(\phi) d\phi$$
 
@@ -112,7 +112,7 @@ $a_0 = 50$, $a_1 = 75$,$a_2 = 0$,$a_3 = -175/4$,$a_4 = 0$,$a_5 = 275/8$.
     
 thus
 
-$$u(r,\phi) \approx 50 + 75 r P_1(cos(\phi)) - \frac{175}{4} r^3 P_3(cos(\phi)) + \frac{275}{8} r^5 P_5(cos(\phi)) + ...$$
+$$u(r,\phi) \approx 50 + 75 r P_1(\cos(\phi)) - \frac{175}{4} r^3 P_3(\cos(\phi)) + \frac{275}{8} r^5 P_5(\cos(\phi)) + ...$$
 
 Surprisingly, this can be plotted on wolframalpha, and the boundary conditions at $r=1$ can be seen: $\href{https://www.wolframalpha.com/input/?i=graph+sum_{n%3D0}^{50}+50+r^n+LegendreP(n%2C+cos(x))+(LegendreP(-1+%2B+n%2C+0)+-+LegendreP(1+%2B+n%2C+0))+where+r%3D1+from+x%3D0+to+pi}{link}$ which is pretty cool.
 

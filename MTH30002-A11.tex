@@ -56,19 +56,19 @@ KG+G^{''}=0
 
 For $K \geq 0$, we let $K=k^2$
 
-$$G(\theta) = Acos(k\theta) + Bsin(k\theta)$$
+$$G(\theta) = A\cos(k\theta) + B\sin(k\theta)$$
 
 We have the boundary conditions
 
 $$G\left(\frac{\pi}{2}\right) = G\left(\frac{3\pi}{2}\right) = 0$$
 
-$$\det \left( \begin{bmatrix} cos\left(k\frac{\pi}{2}\right) & sin\left(k\frac{\pi}{2}\right) \\ cos\left(k\frac{-\pi}{2}\right) & sin\left(k\frac{-\pi}{2}\right) \end{bmatrix} \right) = 0 $$
+$$\det \left( \begin{bmatrix} \cos\left(k\frac{\pi}{2}\right) & \sin\left(k\frac{\pi}{2}\right) \\ \cos\left(k\frac{-\pi}{2}\right) & \sin\left(k\frac{-\pi}{2}\right) \end{bmatrix} \right) = 0 $$
 
 This is clearly true for all integer values of $k$.
 
 Thus, we have the eigenfunction
 
-$$G_k(\theta) = A_k cos(k\theta) + B_k sin(k\theta)$$
+$$G_k(\theta) = A_k \cos(k\theta) + B_k \sin(k\theta)$$
 
 
 
@@ -83,20 +83,20 @@ Thus, we have
 $$F(r) = A k^p\Bigr| p \geq 0$$
 Thus, for inside the disk, we have
 
-$$u(r,\theta) = \sum r^n G_n(\theta) = \sum_{n=0}^{\infty} A_n r^n cos(n \theta) + \sum_{n=1}^{\infty} B_n r^n sin (n\theta)$$
+$$u(r,\theta) = \sum r^n G_n(\theta) = \sum_{n=0}^{\infty} A_n r^n \cos(n \theta) + \sum_{n=1}^{\infty} B_n r^n \sin (n\theta)$$
 
 Applying our boundary conditions and given the fact this is clearly a fourier series, we have
 
 $$A_0 = \frac{1}{2\pi} \int_{-\pi/2}^{\pi/2} 110 d\theta = 55$$
 
-$$A_n= \frac{1}{\pi} \int_{-\pi/2}^{\pi/2} 110 cos(n\theta) d\theta$$
-$$A_n = \frac{220}{n \pi} sin\left(\frac{n\pi}{2}\right)$$
+$$A_n= \frac{1}{\pi} \int_{-\pi/2}^{\pi/2} 110 \cos(n\theta) d\theta$$
+$$A_n = \frac{220}{n \pi} \sin\left(\frac{n\pi}{2}\right)$$
 
 Likewise we have $B_n = 0$
 
 Thus, as $A_n=0$ for $n=2n-1$, we have
 
-$$u(r,\theta) = 55 -220 \sum_{n=1}^{\infty} r^{2n-1} \left(\frac{(-1)^n}{(2n-1)\pi}\right) cos((2n-1)\theta)$$
+$$u(r,\theta) = 55 -220 \sum_{n=1}^{\infty} r^{2n-1} \left(\frac{(-1)^n}{(2n-1)\pi}\right) \cos((2n-1)\theta)$$
 
 
 
@@ -109,7 +109,7 @@ $$
 thus we have the general solution
 
 $$
-U_{mn}(x,y,t) = \left(B_{mn}cos(\lambda_{mn}t)+B^{*}_{mn}sin\left(\lambda_{mn}t)\right)\right)sin\left(\frac{m \pi x}{a}\right)sin\left(\frac{n \pi y}{b}\right)
+U_{mn}(x,y,t) = \left(B_{mn}\cos(\lambda_{mn}t)+B^{*}_{mn}\sin\left(\lambda_{mn}t)\right)\right)\sin\left(\frac{m \pi x}{a}\right)\sin\left(\frac{n \pi y}{b}\right)
 $$
 
 where
